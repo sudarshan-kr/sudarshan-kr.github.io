@@ -99,99 +99,108 @@
         }
 
         .projects-grid .card:hover {
-    transform: perspective(1000px) scale(1.02);
-}
+            transform: perspective(1000px) scale(1.02);
+        }
 
-.projects-grid .card .parallax-container {
-    transition: transform 0.1s ease-out;
-}
+        .projects-grid .card .parallax-container {
+            transition: transform 0.1s ease-out;
+        }
 
-/* Constrain project cards to a comfortable width on larger screens */
-.projects-grid .card {
-    max-width: 480px;
-    width: auto !important;
-    margin: 0 auto !important;
-    padding: 1rem !important;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); /* Added for smoother scaling */
-}
+        /* Constrain project cards to a comfortable width on larger screens and center them in their columns.
+           Keep full-width behaviour on small screens for a responsive layout. */
+        .projects-grid .card {
+            max-width: 480px; /* narrower cards to match reference */
+            width: auto !important;
+            margin: 0 auto !important; /* center inside the grid column */
+            padding: 1rem !important; /* tighten internal padding (p-4 ~= 1rem) */
+        }
 
-/* Responsive layout for small screens */
-@media (max-width: 767px) {
-    .projects-grid .card {
-        max-width: none;
-        width: 100% !important;
-        margin: 0 !important;
-    }
-}
+        /* On narrow screens allow cards to be full-width to use available space */
+        @media (max-width: 767px) {
+            .projects-grid .card {
+                max-width: none;
+                width: 100% !important;
+                margin: 0 !important;
+            }
+        }
+        
+        .nav-link:hover {
+            transform: scale(1.05);
+        }
 
-.nav-link:hover {
-    transform: scale(1.05);
-    color: var(--heading-color) !important;
-}
+        /* Ensure nav link hover color follows theme */
+        .nav-link:hover {
+            color: var(--heading-color) !important;
+        }
 
-header {
-    background-color: var(--card-color) !important;
-}
+        /* Header background should follow theme variables (override utility with opacity suffix) */
+        header {
+            background-color: var(--card-color) !important;
+        }
 
-section[id] {
-    scroll-margin-top: 72px;
-}
+        /* Ensure anchored sections are visible below the sticky header when navigating via in-page links */
+        section[id] {
+            /* default offset; JS will adjust dynamically on load to match header height */
+            scroll-margin-top: 72px;
+        }
 
-/* Combined .btn-magic styles for clarity */
-.btn-magic {
-    border: 1px solid var(--btn-border);
-    background-color: var(--btn-bg) !important;
-    color: var(--text-color) !important;
-    transition: all 0.3s ease;
-}
+        .btn-magic {
+            border: 1px solid var(--btn-border);
+            background-color: var(--btn-bg);
+            transition: all 0.3s ease;
+        }
+        .btn-magic:hover {
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+            transform: scale(1.02);
+            background-color: var(--hover-btn-bg);
+        }
 
-.btn-magic:hover {
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
-    transform: scale(1.02);
-    background-color: var(--hover-btn-bg) !important;
-}
+        .hover-glow {
+            transition: box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .hover-glow:hover {
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.1), 0 0 40px rgba(255, 255, 255, 0.05);
+        }
 
-.hover-glow {
-    transition: box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.hover-glow:hover {
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.1), 0 0 40px rgba(255, 255, 255, 0.05);
-}
-
-.card, .card * {
-    background-color: var(--card-color);
-    border-color: var(--border-color);
-    color: var(--text-color) !important;
-}
-
-/* Utility color overwrites using variables */
-.text-stone-300, .text-stone-400 { color: var(--muted-text-color) !important; }
-
-.bg-stone-950 { background-color: var(--bg-color) !important; }
-.bg-stone-900 { background-color: var(--card-color) !important; }
-.border-stone-800 { border-color: var(--border-color) !important; }
-.bg-stone-800 { background-color: var(--btn-bg) !important; }
-.border-stone-700 { border-color: var(--btn-border) !important; }
-
-.group-hover\:bg-gradient-to-br {
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.group:hover .group-hover\:bg-gradient-to-br {
-    opacity: 1;
-}
-
-
+        .card {
+            background-color: var(--card-color) !important;
+            border-color: var(--border-color) !important;
+            color: var(--text-color) !important;
+        }
+        /* Ensure every text node inside a card follows the theme color (overrides utility classes like text-white) */
+        .card, .card * {
+            color: var(--text-color) !important;
+        }
+        /* overwrite utility text colors to use theme variables */
+        .text-stone-300 { color: var(--muted-text-color) !important; }
+        .text-stone-400 { color: var(--muted-text-color) !important; }
+        /* background utilities */
+        .bg-stone-950 { background-color: var(--bg-color) !important; }
+        .bg-stone-900 { background-color: var(--card-color) !important; }
+        .border-stone-800 { border-color: var(--border-color) !important; }
+        .bg-stone-800 { background-color: var(--btn-bg) !important; }
+        .border-stone-700 { border-color: var(--btn-border) !important; }
+        /* buttons and small elements */
+        .btn-magic {
+            background-color: var(--btn-bg) !important;
+            border-color: var(--btn-border) !important;
+            color: var(--text-color) !important;
+        }
+        .btn-magic:hover { background-color: var(--hover-btn-bg) !important; }
+        .group-hover\:bg-gradient-to-br {
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .group:hover .group-hover\:bg-gradient-to-br {
+            opacity: 1;
+        }
         #project-1-gradient { background-image: linear-gradient(to bottom right, var(--gradient-1), transparent); }
         #project-2-gradient { background-image: linear-gradient(to bottom right, var(--gradient-2), transparent); }
         #project-3-gradient { background-image: linear-gradient(to bottom right, var(--gradient-3), transparent); }
         #project-4-gradient { background-image: linear-gradient(to bottom right, var(--gradient-4), transparent); }
         #project-5-gradient { background-image: linear-gradient(to bottom right, var(--gradient-5), transparent); }
-        
-        .bg-blue-400 { background-color: #60a5fa; } /* ನಿಮ್ಮ ಪೋರ್ಟ್‌ಫೋಲಿಯೊದ ಹೈಲೈಟ್ ಕಲರ್ */
-
+        .bg-blue-400 { background-color: #60a5fa; }
+        /* Footer should follow theme variables */
         footer {
             background: linear-gradient(to bottom, var(--bg-color) 0%, var(--card-color) 100%) !important;
             border-color: var(--border-color) !important;
@@ -199,7 +208,7 @@ section[id] {
         }
         footer a { color: var(--muted-text-color) !important; }
         footer a:hover { color: var(--heading-color) !important; }
-
+        /* Map wrapper for responsive embed */
         .map-wrapper iframe {
             width: 100%;
             height: auto;
@@ -207,35 +216,40 @@ section[id] {
             aspect-ratio: 16 / 9;
             display: block;
         }
-
+        /* Make the mobile full-width panel follow the current theme */
         #mobile-nav {
+            /* Use theme card color for the panel background */
             background-color: var(--card-color) !important;
             color: var(--text-color) !important;
+            /* Keep backdrop blur behavior from the utility class */
             backdrop-filter: blur(6px);
         }
-
+        /* Ensure links and buttons inside the mobile nav use themed colors */
         #mobile-nav a,
         #mobile-nav button,
         #mobile-nav .text-stone-200,
         #mobile-nav .text-stone-300 {
             color: var(--muted-text-color) !important;
         }
-
+        /* Make the close icon visible and follow heading color */
         #mobile-nav-close {
             color: var(--heading-color) !important;
         }
-
+        /* Center the mobile hamburger and keep theme toggle on the right on small screens */
         @media (max-width: 767px) {
             header .container { position: relative; }
+            /* place the mobile hamburger at the left corner (small inset) and vertically center it */
             #mobile-menu-btn {
                 position: absolute;
                 left: 1rem;
                 top: 50%;
                 transform: translateY(-50%);
             }
+            /* keep the theme toggle at the right side, vertically centered */
             #theme-toggle { position: absolute; right: 1rem; top: 50%; transform: translateY(-50%); }
         }
 
+        /* Bottom-fixed contact bar uses theme variables so it adapts to light/dark themes */
         #bottom-contacts {
             position: fixed;
             left: 50%;
@@ -248,6 +262,7 @@ section[id] {
             align-items: center;
             padding: 0.45rem 0.6rem;
             border-radius: 9999px;
+            /* Use theme card color and border so it blends in both themes */
             background-color: var(--card-color);
             border: 1px solid var(--border-color);
             backdrop-filter: blur(6px);
@@ -255,9 +270,10 @@ section[id] {
             transition: transform 200ms ease, opacity 200ms ease, background-color 200ms ease, border-color 200ms ease;
         }
 
+        /* Larger interactive icons with a smooth hover/focus effect */
         #bottom-contacts .contact-icon {
             color: var(--muted-text-color);
-            font-size: 1.45rem;
+            font-size: 1.45rem; /* larger icon */
             padding: 0.5rem;
             border-radius: 12px;
             display: inline-flex;
@@ -267,6 +283,7 @@ section[id] {
             will-change: transform, box-shadow;
         }
 
+        /* Hover and focus: pop + glow */
         #bottom-contacts .contact-icon:hover,
         #bottom-contacts .contact-icon:focus {
             transform: translateY(-3px) scale(1.08);
@@ -276,9 +293,11 @@ section[id] {
             outline: none;
         }
 
+        /* Keyboard focus visible outline for accessibility */
         #bottom-contacts .contact-icon:focus-visible {
             box-shadow: 0 0 0 3px rgba(99,102,241,0.14), 0 6px 18px rgba(96,165,250,0.08);
         }
+
         /* Slightly larger gap and vertical padding on taller screens */
         @media (min-width: 1024px) {
             #bottom-contacts { gap: 0.75rem; padding: 0.5rem 0.8rem; }
@@ -294,6 +313,7 @@ section[id] {
 </head>
 <body class="gradient-bg">
 
+    <!-- Navbar -->
     <header class="py-6 sticky top-0 z-50 bg-stone-950/80 backdrop-blur-md transition-colors">
         <div class="container mx-auto px-4 flex justify-between items-center">
             <a href="#" class="text-2xl font-bold"></a>
@@ -304,16 +324,18 @@ section[id] {
                 <a href="#projects" class="nav-link text-sm text-stone-300 hover:text-white transition">Projects</a>
                 <a href="#skills" class="nav-link text-sm text-stone-300 hover:text-white transition">Skills</a>
                 <a href="#contact" class="nav-link text-sm text-stone-300 hover:text-white transition">Contact</a>
-                <a id="download-resume-desktop" href="ನಿಮ್ಮ_ಲಿಂಕ್_ಇಲ್ಲಿ" target="_blank" rel="noopener noreferrer" class="nav-link text-sm text-stone-300 hover:text-white transition btn-magic px-3 py-2 rounded" aria-label="Download resume (desktop)">Resume</a>
+                <a id="download-resume-desktop" href=https://drive.google.com/file/d/18SJ4lcOTEKKfh2j0qNF8sZT715lU2jP8/view?usp=sharing target="_blank" rel="noopener noreferrer" class="nav-link text-sm text-stone-300 hover:text-white transition btn-magic px-3 py-2 rounded" aria-label="Download resume (desktop)">Resume</a>
             </nav>
             <button id="mobile-menu-btn" class="md:hidden text-stone-300" aria-label="Open mobile menu" aria-expanded="false">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
                 </svg>
             </button>
+            <!-- Theme toggle -->
             <button id="theme-toggle" class="ml-4 text-stone-300 inline-flex items-center px-3 py-2 rounded-md" aria-label="Toggle theme">
                 <i id="theme-icon" class="fas fa-moon"></i>
             </button>
+            <!-- Mobile full-width panel nav (hidden on desktop) -->
             <nav id="mobile-nav" class="md:hidden fixed top-0 left-0 right-0 transform -translate-y-full transition-transform duration-300 bg-stone-900/95 backdrop-blur-sm z-50">
                 <div class="px-4 py-4 flex items-center justify-between border-b border-stone-800">
                     <div class="text-lg font-semibold text-stone-200">Menu</div>
@@ -326,33 +348,34 @@ section[id] {
                     <a href="#projects" class="block px-3 py-2 text-sm text-stone-300 hover:text-white">Projects</a>
                     <a href="#skills" class="block px-3 py-2 text-sm text-stone-300 hover:text-white">Skills</a>
                     <a href="#contact" class="block px-3 py-2 text-sm text-stone-300 hover:text-white">Contact</a>
-                    <a id="download-resume-mobile" href="ನಿಮ್ಮ_ಲಿಂಕ್_ಇಲ್ಲಿ" target="_blank" rel="noopener noreferrer" class="block px-3 py-2 text-sm text-stone-300 hover:text-white btn-magic rounded" aria-label="Download resume (mobile)">Resume</a>
+                    <a id="download-resume-mobile" href=https://drive.google.com/file/d/18SJ4lcOTEKKfh2j0qNF8sZT715lU2jP8/view?usp=sharing target="_blank" rel="noopener noreferrer" class="block px-3 py-2 text-sm text-stone-300 hover:text-white btn-magic rounded" aria-label="Download resume (mobile)">Resume</a>
                 </div>
             </nav>
         </div>
     </header>
 
     <main class="container mx-auto px-4">
+    <!-- Hero Section (reduced height/padding to remove large gap) -->
     <section id="hero" class="min-h-[60vh] flex items-center justify-center text-center py-8 md:py-12">
    <div class="max-w-4xl w-full">
   <div class="hero-image-container mb-6">
         <img
             src="https://github.com/sudarshan-kr/sudarshan-kr.github.io/blob/main/my_new_picture.png?raw=true"
-            alt="Sudarshan K R Profile Picture"
+            alt="Profile Picture"
             loading="lazy"
             onerror="this.onerror=null;this.src='./assets/profile-fallback.svg'"
-            class="rounded-full w-40 h-40 mx-auto mb-3 object-cover shadow-xl border-2 border-stone-800"
+            class="rounded-full w-40 h-40 mx-auto mb-3 object-cover"
         />
 
   </div>
   <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight mb-3">
-    Hi, I'm <span class="text-blue-400">Sudarshan</span>
+    Hi, I'm <span class="text-blue-400">Sanket</span>
   </h1>
   <p class="text-sm md:text-lg text-stone-400 max-w-2xl mx-auto mb-6">
     I'm a DevOps Engineer passionate about automating workflows, deploying scalable applications, and optimizing cloud infrastructure for performance and reliability.
   </p>
   <div class="flex flex-col sm:flex-row justify-center items-center space-y-3 sm:space-y-0 sm:space-x-4">
-    <a href="#contact" class="btn-magic text-sm px-6 py-3 rounded-full border border-stone-700 bg-stone-800 hover:bg-stone-700 transition inline-block" aria-label="Go to footer">
+    <a href="#footer" class="btn-magic text-sm px-6 py-3 rounded-full border border-stone-700 bg-stone-800 hover:bg-stone-700 transition inline-block" aria-label="Go to footer">
       Get in Touch
     </a>
     <a href="#projects" class="btn-magic text-sm px-6 py-3 rounded-full border border-stone-700 bg-stone-800 hover:bg-stone-700 transition inline-block" aria-label="Explore Projects">
@@ -363,101 +386,107 @@ section[id] {
 
 </section>
 
+
+<!-- Experience Section -->
 <section id="experience" class="py-12">
     <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Experience</h2>
     <div class="max-w-3xl mx-auto space-y-8">
-        
+
+        <!-- 1️⃣ Betatest Solutions -->
         <div class="card bg-stone-900 border border-stone-800 rounded-2xl p-6 hover:hover-glow transition-all">
             <div class="flex justify-between items-center mb-4">
                 <div class="flex items-center space-x-4">
-                    <img src="https://betatestsolutions.com/wp-content/uploads/2024/02/pic.jpg" alt="Beta Test Solutions" class="w-12 h-12 object-contain rounded-full">
-                    <h3 class="text-xl font-semibold">Beta Test Solutions</h3>
+                    <img src="https://betatestsolutions.com/wp-content/uploads/2025/07/Frame-1171275528.png" alt="Betatest Solutions Logo" class="w-12 h-12 object-contain rounded-full">
+                    <h3 class="text-xl font-semibold">Betatest Solutions</h3>
                 </div>
-                <span class="text-sm text-stone-400 whitespace-nowrap">May 2025 - October 2025</span>
+                <span class="text-sm text-stone-400">May 2025 - Oct 2025</span>
             </div>
-            <p class="text-sm text-stone-300 mb-4 font-medium">DevOps Engineer Intern</p>
+            <p class="text-sm text-stone-300 mb-4">DevOps Engineer Intern</p>
+
             <ul class="list-disc list-outside text-sm text-stone-400 space-y-2 pl-5">
                 <li>Configured New Relic alerts to ensure immediate notification for system and database downtimes across staging and production environments, reducing downtime by 20%.</li>
-                <li>Experienced in setting up end-to-end CI/CD pipelines in Azure DevOps to automate the build and deployment of Node.js applications to AWS EC2 instances, improving deployment efficiency by 40%.</li>
-                <li>Collected and analyzed detailed information on AWS services used in each project, resulting in a 30% reduction in operational time.</li>
-                <li>Automated EC2 instance start and application stop for ETL services using IAM roles, CloudWatch, SNS, and Lambda functions, reducing manual intervention by 40%.</li>
-                <li>Managed domain setup in Route 53, including primary, 2nd-level, and 3rd-level subdomains, attaching DNS records, and performing cost estimation.</li>
-                <li>Created EC2 launch templates for ETL services with pre-installed libraries using user-data scripts for automated environment setup.</li>
-                <li>Revoke the access in AWS services and rotate the credentials in services and the pipeline.</li>
-                <li>Twingate setup for secure database connection.</li>
+                <li>Set up end-to-end CI/CD pipelines in Azure DevOps to automate build and deployment of Node.js applications to AWS EC2, improving deployment efficiency by 40%.</li>
+                <li>Optimized Azure Repos workflows and implemented branching strategies for effective version control.</li>
+                <li>Collected and analyzed AWS service usage across projects, reducing operational effort by 30%.</li>
+                <li>Automated EC2 start/stop and ETL services using IAM, CloudWatch, SNS, and Lambda.</li>
+                <li>Managed Route 53 domain configurations including subdomains and DNS records.</li>
+                <li>Created EC2 launch templates with pre-installed dependencies using user-data scripts.</li>
+                <li>Revoked AWS service access and rotated credentials across services and CI/CD pipelines.</li>
+                <li>Configured Twingate for secure database connectivity.</li>
                 <li>Provisioned and managed AWS infrastructure using Terraform and Terragrunt.</li>
-                <li>Implemented infrastructure as code using Terraform and Terragrunt, managing AWS resources including EC2, EKS.</li>
             </ul>
         </div>
 
+        <!-- 2️⃣ TensorGo Pvt Ltd -->
         <div class="card bg-stone-900 border border-stone-800 rounded-2xl p-6 hover:hover-glow transition-all">
             <div class="flex justify-between items-center mb-4">
                 <div class="flex items-center space-x-4">
-                    <img src="https://cdn.tracxn.com/images/seo/social/companies/tensorgo-overview-1752706970640.webp" alt="TensorGo" class="w-12 h-12 object-contain rounded-full">
-                    <h3 class="text-xl font-semibold">TensorGo</h3>
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDILX9tDvAA96WZVRll9jf8GQgCh-onCGk1w&s" alt="TensorGo Logo" class="w-12 h-12 object-contain rounded-full">
+                    <h3 class="text-xl font-semibold">TensorGo Pvt Ltd</h3>
                 </div>
-                <span class="text-sm text-stone-400 whitespace-nowrap">August 2024 - October 2024</span>
+                <span class="text-sm text-stone-400">Aug 2024 - Oct 2024</span>
             </div>
-            <p class="text-sm text-stone-300 mb-4 font-medium">DevOps Engineer Intern</p>
+            <p class="text-sm text-stone-300 mb-4">DevOps Engineer Intern</p>
+
             <ul class="list-disc list-outside text-sm text-stone-400 space-y-2 pl-5">
-                <li>Assisted in setting up CI/CD pipelines for various development projects, streamlining the deployment process and reducing manual effort by 25%.</li>
-                <li>Coordinated version control with Git and managed deployments with Jenkins.</li>
-                <li>Worked on Azure VMs, including creating snapshots and managing access with SSH keys.</li>
-                <li>Familiarized with monitoring tools like Prometheus and Grafana.</li>
+                <li>Assisted in setting up CI/CD pipelines for multiple development projects, reducing manual deployment effort by 25%.</li>
+                <li>Managed source code versioning using Git and handled automated deployments with Jenkins.</li>
+                <li>Worked on Azure Virtual Machines including snapshot creation and SSH key-based access management.</li>
+                <li>Gained hands-on experience with monitoring tools such as Prometheus and Grafana.</li>
             </ul>
         </div>
 
+        <!-- 3️⃣ MicroDegree -->
         <div class="card bg-stone-900 border border-stone-800 rounded-2xl p-6 hover:hover-glow transition-all">
             <div class="flex justify-between items-center mb-4">
                 <div class="flex items-center space-x-4">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTju0Jab4kLoOmrdn3-xngmLQoUuHebh3NhHQ&s" alt="Trainee" class="w-12 h-12 object-contain rounded-full">
-                    <h3 class="text-xl font-semibold">Devops Engineer Trainee</h3>
+                    <div class="w-12 h-12 flex items-center justify-center rounded-full bg-stone-800 text-sm font-semibold">
+                        MD
+                    </div>
+                    <h3 class="text-xl font-semibold">MicroDegree</h3>
                 </div>
-                <span class="text-sm text-stone-400 whitespace-nowrap">October 2023 - April 2024</span>
+                <span class="text-sm text-stone-400">Oct 2023 - Apr 2024</span>
             </div>
-            <p class="text-sm text-stone-300 mb-4 font-medium">DevOps Trainee</p>
+            <p class="text-sm text-stone-300 mb-4">DevOps Engineer Trainee</p>
+
             <ul class="list-disc list-outside text-sm text-stone-400 space-y-2 pl-5">
-                <li>Gained good knowledge of Linux commands and basic Git commands.</li>
-                <li>Worked with AWS services like EC2, IAM, VPC, S3, SNS, RDS, and Route 53.</li>
-                <li>Created Auto-Scaling Groups and configured Auto-Scaling using Launch Configurations to ensure application scalability and high availability.</li>
-                <li>Proficient in setting up CI/CD Pipelines using Jenkins.</li>
+                <li>Gained strong hands-on knowledge of Linux commands and basic Git operations.</li>
+                <li>Worked with AWS services including EC2, IAM, VPC, S3, SNS, RDS, and Route 53.</li>
+                <li>Created Auto Scaling Groups and Launch Configurations to ensure application scalability and high availability.</li>
+                <li>Built and managed CI/CD pipelines using Jenkins for automated application deployment.</li>
             </ul>
         </div>
+
     </div>
 </section>
 
+
+        <!-- Education Section -->
 <section id="education" class="py-12">
     <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Education</h2>
     <div class="max-w-3xl mx-auto space-y-8">
-        
+        <!-- College 1 -->
         <div class="card bg-stone-900 border border-stone-800 rounded-2xl p-6 hover:hover-glow transition-all">
             <div class="flex justify-between items-center mb-4">
                 <div class="flex items-center space-x-4">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqFXeZMVoGV90dCBYNbrKVZjnEWRF1YcAF4A&s" alt="New Horizon College of Engineering" class="w-12 h-12 object-contain rounded-full border border-stone-700">
+                    <!-- College Logo -->
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e3/New_Horizon_College_of_Engineering_logo.png" alt="SDM Institute of Technology Logo" class="w-12 h-12 object-contain rounded-full">
                     <h3 class="text-xl font-semibold">Bachelor of Engineering</h3>
                 </div>
-                <span class="text-sm text-stone-400 whitespace-nowrap">2020 - 2024</span>
+                <span class="text-sm text-stone-400 whitespace-nowrap">2018 - 2022</span>
             </div>
-            <p class="text-sm text-stone-300 mb-4">New Horizon College of Engineering</p>
+            <p class="text-sm text-stone-300 mb-4">New Horizon College Of Engineering</p>
             <ul class="list-disc list-outside text-sm text-stone-400 space-y-2 pl-5">
-                <li>Completed Bachelor of Engineering and gained expertise in DevOps practices.</li>
+                <li>Graduated in Bachelor of Engineering.</li>
             </ul>
         </div>
+        
         
     </div>
 </section>
 
 
-
-
-
-
-
-
-
-
-
-<!-- Projects Section -->
+         <!-- Projects Section -->
             <section id="projects" class="py-12">
                 <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Projects</h2>
                 <div class="projects-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-y-6 gap-x-4 max-w-3xl mx-auto px-4">
@@ -468,21 +497,24 @@ section[id] {
                     <div class="relative z-10">
                         <!-- Placeholder image for the project -->
                         <div class="mb-4">
-                            <img src="https://raw.githubusercontent.com/LondheShubham153/k8s-kind-voting-app/main/grafana.png" alt="Grafana dashboard screenshot" loading="lazy" class="w-full object-contain rounded-lg">
+                            <img src="https://github.com/sudarshan-kr/sudarshan-kr.github.io/blob/main/AWS%203-Tier%20Web%20Application.png?raw=true" alt="AWS Three Tier Web Architecture" loading="lazy" class="w-full object-contain rounded-lg">
                         </div>
                         <!-- icon removed as requested -->
-                        <h3 class="text-lg font-semibold text-white mb-2">Monitoring and Alerting Solution</h3>
-                        <p class="text-stone-400 text-sm mb-4">Developed and implemented a complete monitoring and alerting solution using Prometheus, Grafana, and Kubernetes to enhance system reliability and performance visibility. This project focuses on collecting, visualizing, and alerting metrics from containerized applications running on Docker and Kubernetes clusters.</p>
+                        <h3 class="text-lg font-semibold text-white mb-2">AWS Three Tier Web Architecture</h3>
+                        <p class="text-stone-400 text-sm mb-4">In this architecture, a public-facing Application Load Balancer forwards client traffic to our web tier EC2 instances. The web tier is running Nginx webservers that are configured to serve a React.js website and redirects our API calls to the application tier’s internal facing load balancer. The internal facing load balancer then forwards that traffic to the application tier, which is written in Node.js. The application tier manipulates data in an Aurora MySQL multi-AZ database and returns it to our web tier. Load balancing, health checks and autoscaling groups are created at each layer to maintain the availability of this architecture.</p>
                         <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">Prometheus</span>
-                            <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">Grafana</span>
-                            <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">Kubernetes</span>
-                            <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">Docker</span>
-                            <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">Linux</span>
-                            <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">YAML</span>
-                            <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">Mimir</span>
-                            <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">Loki</span>
-                            <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">Observability</span>
+                           <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">EC2</span>
+                           <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">Auto Scaling Group (ASG)</span>
+                           <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">Application Load Balancer (ALB)</span>
+                           <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">IAM</span>
+                           <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">S3</span>
+                           <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">RDS</span>
+                           <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">VPC</span>
+                           <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">CloudWatch</span>
+                           <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">SNS</span>
+                           <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">Route 53</span>
+                           <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">CloudFront</span>
+
                         </div>
                     </div>
                 </div>
@@ -496,22 +528,24 @@ section[id] {
                     <div class="relative z-10">
                         <!-- Placeholder image for the project -->
                         <div class="mb-10">
-                            <img src="https://github.com/Sanketarali/Demo-Repo/blob/main/Screenshot%202025-11-01%20233614.png?raw=true" alt="CI/CD Pipeline screenshot" loading="lazy" class="w-full object-contain rounded-lg">
+                            <img src="https://github.com/sudarshan-kr/sudarshan-kr.github.io/blob/main/E-kart%20Application%20Deployment.png?raw=true" alt="E-kart Application Deployment" loading="lazy" class="w-full object-contain rounded-lg">
                         </div>
                         <!-- icon removed as requested -->
-                        <h3 class="text-lg font-semibold text-white mb-2">End-to-End CI/CD Pipeline with DevSecOps Implementation</h3>
+                        <h3 class="text-lg font-semibold text-white mb-2">E-Kart Application Deployment on Kubernetes</h3>
                         <p class="text-stone-400 text-sm mb-4">Designed and implemented a complete CI/CD pipeline integrating Jenkins, GitHub, SonarQube, Docker, Kubernetes, and Prometheus-Grafana to achieve automated, secure, and reliable software delivery. This project focuses on continuous integration, automated builds, code quality analysis, vulnerability scanning, and continuous deployment to Kubernetes clusters.</p>
                         <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">Jenkins</span>
+                            <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">AWS</span>
                             <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">GitHub</span>
-                            <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">SonarQube</span>
-                            <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">OWASP Dependency-Check</span>
+                            <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">Maven/span>
+                            <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">Jdk</span>
                             <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">Docker</span>
+                            <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">ECR</span>
                             <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">Kubernetes</span>
-                            <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">Trivy</span>
-                            <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">Terraform</span>
+                            <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">Karpenter</span>
+                            <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">Argo CD</span>
                             <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">Prometheus</span>
                             <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">Grafana</span>
+                            <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">Ingess</span>
                         </div>
                     </div>
                 </div>
@@ -525,54 +559,27 @@ section[id] {
                     <div id="project-5-gradient" class="absolute inset-0 group-hover:bg-gradient-to-br opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     <div class="relative z-10">
                         <div class="mb-4">
-                            <img src="https://raw.githubusercontent.com/Sanketarali/Demo-Repo/refs/heads/main/kubegreen.png" alt="Kubernetes Cost Optimization project screenshot" class="w-full object-contain rounded-lg">
+                            <img src="https://github.com/sudarshan-kr/sudarshan-kr.github.io/blob/main/MEAN%20Stack%20Application%20CICD%20Deployment.png?raw=true" alt="Mean Stack Application CICD Deployment" class="w-full object-contain rounded-lg">
                         </div>
                         <!-- icon removed as requested -->
-                        <h3 class="text-lg font-semibold text-white mb-2">Kubernetes Cost Optimization using KubeGreen, Prometheus & Grafana</h3>
+                        <h3 class="text-lg font-semibold text-white mb-2">Mean Stack Application CICD Deployment</h3>
                         <p class="text-stone-400 text-sm mb-4">Implemented KubeGreen to automate shutdown and wake-up of non-critical Kubernetes workloads during non-peak hours, optimizing cluster utilization and reducing cloud costs. The project integrates KubeGreen with Cluster Autoscaler, Prometheus, and Grafana for intelligent scheduling, dynamic scaling, and real-time performance monitoring.</p>
                         <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">Kubernetes</span>
-                            <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">KubeGreen</span>
-                            <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">Prometheus</span>
-                            <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">Grafana</span>
-                            <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">Cluster Autoscaler</span>
+                            <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">AWS</span>
+                            <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">Jenkins</span>
+                            <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">Node JS</span>
+                            <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">Nginx</span>
+                            <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">Docker Compose</span>
+                            <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">Mongo DB</span>
                             <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">YAML</span>
                             <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">Linux</span>
                             <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">DevOps</span>
-                            <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">FinOps</span>
+                            <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">Docker Hub</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Project Card 4 -->
-               <div class="group card bg-stone-900 border border-stone-800 rounded-2xl p-6 hover-glow transition-all relative overflow-hidden">
-                    <div id="project-5-gradient" class="absolute inset-0 group-hover:bg-gradient-to-br opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    <div class="relative z-10">
-                        <div class="mb-9">
-                            <img src="https://raw.githubusercontent.com/Sanketarali/Demo-Repo/refs/heads/main/blue.jpg" alt="CI/CD Pipeline Automation project screenshot" class="w-full object-contain rounded-lg">
-                        </div>
-                        <!-- icon removed as requested -->
-                        <h3 class="text-lg font-semibold text-white mb-2">CI/CD Pipeline Automation with Jenkins, ArgoCD & Kubernetes</h3>
-                        <p class="text-stone-400 text-sm mb-4">Designed and implemented a fully automated Continuous Integration and Continuous Deployment (CI/CD) pipeline to streamline the software delivery process using Jenkins, Git, ArgoCD, SonarQube, and Kubernetes. The project focused on integrating build automation, code quality checks, security scans, artifact management, and real-time monitoring to achieve faster, secure, and reliable deployments.</p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">Jenkins</span>
-                            <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">Git</span>
-                            <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">GitLab</span>
-                            <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">ArgoCD</span>
-                            <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">Kubernetes</span>
-                            <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">Docker</span>
-                            <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">SonarQube</span>
-                            <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">OWASP Dependency-Check</span>
-                            <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">Nexus3</span>
-                            <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">Prometheus</span>
-                            <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">Grafana</span>
-                            <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">JIRA</span>
-                            <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">YAML</span>
-                            <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">Linux</span>
-                        </div>
-                    </div>
-                </div>
-
+                
             </div>
         </section>
 
@@ -584,44 +591,33 @@ section[id] {
                 <img src="https://img.shields.io/badge/DevOps-0A66C2?style=for-the-badge&logo=azuredevops&logoColor=white" alt="DevOps" class="h-10 rounded-md" />
                 <img src="https://img.shields.io/badge/AWS-232F3E?style=for-the-badge&logo=amazonaws&logoColor=white" alt="AWS" class="h-10 rounded-md" />
                 <img src="https://img.shields.io/badge/CI--CD-1F2937?style=for-the-badge&logo=githubactions&logoColor=white" alt="CI/CD" class="h-10 rounded-md" />
-
                 <img src="https://img.shields.io/badge/Kubernetes-326CE5?style=for-the-badge&logo=kubernetes&logoColor=white" alt="Kubernetes" class="h-10 rounded-md" />
                 <img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white" alt="Docker" class="h-10 rounded-md" />
                 <img src="https://img.shields.io/badge/Helm-0F172A?style=for-the-badge&logo=helm&logoColor=white" alt="Helm" class="h-10 rounded-md" />
                 <img src="https://img.shields.io/badge/ArgoCD-2D3748?style=for-the-badge&logo=argocd&logoColor=white" alt="ArgoCD" class="h-10 rounded-md" />
-
                 <img src="https://img.shields.io/badge/Terraform-623CE4?style=for-the-badge&logo=terraform&logoColor=white" alt="Terraform" class="h-10 rounded-md" />
                 <img src="https://img.shields.io/badge/Ansible-EE0000?style=for-the-badge&logo=ansible&logoColor=white" alt="Ansible" class="h-10 rounded-md" />
-
                 <img src="https://img.shields.io/badge/Jenkins-D24939?style=for-the-badge&logo=jenkins&logoColor=white" alt="Jenkins" class="h-10 rounded-md" />
                 <img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white" alt="Git" class="h-10 rounded-md" />
                 <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub" class="h-10 rounded-md" />
-                <img src="https://img.shields.io/badge/Bitbucket-0052CC?style=for-the-badge&logo=bitbucket&logoColor=white" alt="Bitbucket" class="h-10 rounded-md" />
                 <img src="https://img.shields.io/badge/Maven-C71A36?style=for-the-badge&logo=apachemaven&logoColor=white" alt="Maven" class="h-10 rounded-md" />
-
                 <img src="https://img.shields.io/badge/Prometheus-E6442E?style=for-the-badge&logo=prometheus&logoColor=white" alt="Prometheus" class="h-10 rounded-md" />
                 <img src="https://img.shields.io/badge/Grafana-F46800?style=for-the-badge&logo=grafana&logoColor=white" alt="Grafana" class="h-10 rounded-md" />
-                <img src="https://img.shields.io/badge/Loki-0F172A?style=for-the-badge&logo=loki&logoColor=white" alt="Loki" class="h-10 rounded-md" />
-                <img src="https://img.shields.io/badge/Mimir-0F172A?style=for-the-badge&logo=prometheus&logoColor=white" alt="Mimir" class="h-10 rounded-md" />
-
                 <img src="https://img.shields.io/badge/Observability-6B7280?style=for-the-badge" alt="Observability" class="h-10 rounded-md" />
                 <img src="https://img.shields.io/badge/Monitoring-6B7280?style=for-the-badge" alt="Monitoring" class="h-10 rounded-md" />
-
                 <img src="https://img.shields.io/badge/SonarQube-4E9BCD?style=for-the-badge&logo=sonarqube&logoColor=white" alt="SonarQube" class="h-10 rounded-md" />
                 <img src="https://img.shields.io/badge/Trivy-0F172A?style=for-the-badge&logo=trivy&logoColor=white" alt="Trivy" class="h-10 rounded-md" />
                 <img src="https://img.shields.io/badge/OWASP-EE0000?style=for-the-badge&logo=owasp&logoColor=white" alt="OWASP" class="h-10 rounded-md" />
-
                 <img src="https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black" alt="Linux" class="h-10 rounded-md" />
                 <img src="https://img.shields.io/badge/Shell-BB8F00?style=for-the-badge&logo=gnubash&logoColor=white" alt="Shell Scripting" class="h-10 rounded-md" />
                 <img src="https://img.shields.io/badge/Nginx-009639?style=for-the-badge&logo=nginx&logoColor=white" alt="Nginx" class="h-10 rounded-md" />
                 <img src="https://img.shields.io/badge/Apache-6B8EBF?style=for-the-badge&logo=apache&logoColor=white" alt="Apache" class="h-10 rounded-md" />
                 <img src="https://img.shields.io/badge/Tomcat-F8DC75?style=for-the-badge&logo=apachetomcat&logoColor=black" alt="Apache Tomcat" class="h-10 rounded-md" />
-
-                <img src="https://img.shields.io/badge/Jira-0052CC?style=for-the-badge&logo=jira&logoColor=white" alt="Jira" class="h-10 rounded-md" />
-                <img src="https://img.shields.io/badge/Confluence-1056A4?style=for-the-badge&logo=confluence&logoColor=white" alt="Confluence" class="h-10 rounded-md" />
-                <img src="https://img.shields.io/badge/Agile-6B7280?style=for-the-badge" alt="Agile" class="h-10 rounded-md" />
-
                 <img src="https://img.shields.io/badge/Nexus3-2B2B2B?style=for-the-badge" alt="Nexus3" class="h-10 rounded-md" />
+                <img src="https://img.shields.io/badge/Azure%20DevOps%20CI%2FCD-0078D7?style=for-the-badge&logo=azuredevops&logoColor=white" alt="Azure DevOps CI/CD" class="h-10 rounded-md" />
+                <img src="https://img.shields.io/badge/New%20Relic-008C99?style=for-the-badge&logo=newrelic&logoColor=white" alt="New Relic" class="h-10 rounded-md" />
+                <img src="https://img.shields.io/badge/Terragrunt-5C4EE5?style=for-the-badge&logo=terraform&logoColor=white" alt="Terragrunt" class="h-10 rounded-md" />
+
             </div>
         </section>
 
@@ -639,7 +635,7 @@ section[id] {
                         </div>
                     </div>
                     <div class="flex space-x-3">
-                        <a href="https://drive.google.com/file/d/1XoJ_hS4Ko0ADZfcBNw6wInnosY5KI-yY/view" target="_blank" rel="noopener noreferrer" class="btn-magic px-4 py-2 rounded-lg text-sm" aria-label="View AWS certificate">View Certificate</a>
+                        <a href="https://drive.google.com/file/d/1s_eUotKJjf-EYsdaiwfhVTkg_c8Fc0ba/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn-magic px-4 py-2 rounded-lg text-sm" aria-label="View AWS certificate">View Certificate</a>
                     </div>
                 </div>
 
@@ -647,13 +643,27 @@ section[id] {
                 <div class="card bg-stone-900 border border-stone-800 rounded-2xl p-6 hover-glow transition-all">
                     <div class="flex items-start space-x-4 mb-4">
                         <div>
-                            <h3 class="text-xl font-semibold mb-1">Introduction to Kubernetes (LFS158)</h3>
-                            <p class="text-stone-400 text-sm mb-1">Issuer: The Linux Foundation</p>
-                            <p class="text-stone-400 text-sm mb-0">Certificate ID: <strong>LF6740mnbfsk</strong></p>
+                            <h3 class="text-xl font-semibold mb-1">DevOps Course Completion Cirtificate</h3>
+                            <p class="text-stone-400 text-sm mb-1">Issuer: MicroDegree</p>
+                            
                         </div>
                     </div>
                     <div class="flex space-x-3">
-                        <a href="https://ti-user-certificates.s3.amazonaws.com/e0df7fbf-a057-42af-8a1f-590912be5460/a9ee9c68-25b6-4752-bf5b-10fcae2eee2e-sanket-arali-2cdce95f-5741-443e-878f-abb4919f943d-certificate.pdf" target="_blank" rel="noopener noreferrer" class="btn-magic px-4 py-2 rounded-lg text-sm" aria-label="View Kubernetes certificate">View Certificate</a>
+                        <a href="https://drive.google.com/file/d/1sGkkNZnMAEpXgKrrmyKa9EfjagBfbM1u/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn-magic px-4 py-2 rounded-lg text-sm" aria-label="View Devops certificate">View Certificate</a>
+                    </div>
+                </div>
+
+                <!-- Cert 3 -->
+                <div class="card bg-stone-900 border border-stone-800 rounded-2xl p-6 hover-glow transition-all">
+                    <div class="flex items-start space-x-4 mb-4">
+                        <div>
+                            <h3 class="text-xl font-semibold mb-1">AWS Course Completion Certificate</h3>
+                            <p class="text-stone-400 text-sm mb-1">Issuer: MicroDegree</p>
+                            
+                        </div>
+                    </div>
+                    <div class="flex space-x-3">
+                        <a href="https://drive.google.com/file/d/1gT6FWNfhlMLXepUECCaWSrJDIag8jH9m/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn-magic px-4 py-2 rounded-lg text-sm" aria-label="View AWS Certificate">View Certificate</a>
                     </div>
                 </div>
 
@@ -661,13 +671,13 @@ section[id] {
                 <div class="card bg-stone-900 border border-stone-800 rounded-2xl p-6 hover-glow transition-all">
                     <div class="flex items-start space-x-4 mb-4">
                         <div>
-                            <h3 class="text-xl font-semibold mb-1">Microsoft Certified: Azure Data Fundamentals</h3>
-                            <p class="text-stone-400 text-sm mb-1">Issuer: Microsoft</p>
-                            <p class="text-stone-400 text-sm mb-0">Credential ID: <strong>3045F15F2A0A3047</strong></p>
+                            <h3 class="text-xl font-semibold mb-1">Internship Completion Certificate</h3>
+                            <p class="text-stone-400 text-sm mb-1">Issuer: Betatest Solution Pvt Ltd</p>
+                            
                         </div>
                     </div>
                     <div class="flex space-x-3">
-                        <a href="https://learn.microsoft.com/api/credentials/share/en-us/SanketSArali-1133/3045F15F2A0A3047?sharingId=C768A5523CBE0C90" target="_blank" rel="noopener noreferrer" class="btn-magic px-4 py-2 rounded-lg text-sm" aria-label="View Azure certificate">View Certificate</a>
+                        <a href="https://drive.google.com/file/d/1zQK1lPwLJiekGuV8uPXR9cOVvj7OGgFT/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn-magic px-4 py-2 rounded-lg text-sm" aria-label="Internship Completion Certificate">View Certificate</a>
                     </div>
                 </div>
 
@@ -686,8 +696,8 @@ section[id] {
                 <!-- Responsive Google Map embed -->
                 <div class="map-wrapper rounded-lg overflow-hidden border border-stone-800">
                     <iframe
-                        title="Rajathadri Apartments map"
-                        src="https://www.google.com/maps?q=12.9556575,77.5223053&z=20&output=embed"
+                        title="Shakthi Anirudh Nilayam - Electronic City Phase 1 Map"
+                        src="https://www.google.com/maps?q=Shakthi+Anirudh+Nilayam,+MMR+RESIDENCY,+Anantha+Nagar+Rd,+Ananth+Nagar,+Phase+1,+Kammasandra,+Electronic+City,+Bengaluru,+Karnataka+560100&z=17&output=embed"
                         style="border:0; width:100%; height:320px; display:block;"
                         allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
@@ -700,7 +710,7 @@ section[id] {
                     </address>
 
                     <div class="flex justify-center">
-                        <a href="https://www.google.com/maps/search/?api=1&query=Rajathadri+Apartments,+1st+main+1st+cross,+Vidhyagiri+Layout,+BDA+Lay+Out,+Chandra+Layout,+Bengaluru,+Karnataka" target="_blank" rel="noopener noreferrer" class="btn-magic text-sm px-6 py-3 rounded-full border border-stone-700 bg-stone-800 hover:bg-stone-700 transition inline-block" aria-label="Open address in Google Maps">
+                        <a href="https://www.google.com/maps?q=Shakthi+Anirudh+Nilayam,+MMR+RESIDENCY,+Anantha+Nagar+Rd,+Ananth+Nagar,+Phase+1,+Kammasandra,+Electronic+City,+Bengaluru,+Karnataka+560100&z=17&output=embed" target="_blank" rel="noopener noreferrer" class="btn-magic text-sm px-6 py-3 rounded-full border border-stone-700 bg-stone-800 hover:bg-stone-700 transition inline-block" aria-label="Open address in Google Maps">
                             Open in Google Maps
                         </a>
                     </div>
@@ -723,16 +733,14 @@ section[id] {
 
 <!-- Bottom-fixed contact bar (visible before scrolling) -->
 <div id="bottom-contacts" role="region" aria-label="Quick contacts" title="Quick contacts">
-    <a href="https://github.com/Sanketarali" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="contact-icon">
+    <a href="https://github.com/gowdas1997" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="contact-icon">
         <i class="fab fa-github" aria-hidden="true"></i>
     </a>
-    <a href="https://www.linkedin.com/in/sanketarali/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="contact-icon">
+    <a href="https://www.linkedin.com/in/sudarshankr" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="contact-icon">
         <i class="fab fa-linkedin" aria-hidden="true"></i>
     </a>
-    <a href="https://x.com/SanketArali" target="_blank" rel="noopener noreferrer" aria-label="X" class="contact-icon">
-        <i class="fab fa-twitter" aria-hidden="true"></i>
-    </a>
-    <a href="https://instagram.com/sanket_arali" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="contact-icon">
+    
+    <a href="https://www.instagram.com/sudarshan_gowda_97" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="contact-icon">
         <i class="fab fa-instagram" aria-hidden="true"></i>
     </a>
     <a href="#" id="bottom-mail-btn" aria-label="Send email" class="contact-icon">
@@ -876,7 +884,7 @@ section[id] {
             }
 
             // Resume URL configuration
-            const RESUME_URL = 'https://drive.google.com/file/d/1bCV99UIKK4EzfxPuKj-ApJr1HFuk9row/view?usp=sharing';
+            const RESUME_URL = 'https://drive.google.com/file/d/18SJ4lcOTEKKfh2j0qNF8sZT715lU2jP8/view?usp=sharing';
 
             // Hook up Resume download buttons (desktop and mobile)
             const resumeDesktop = document.getElementById('download-resume-desktop');
@@ -898,7 +906,7 @@ section[id] {
             if (footerMail) {
                 footerMail.addEventListener('click', (e) => {
                     e.preventDefault();
-                    openGmailCompose('sanketarali5@gmail.com');
+                    openGmailCompose('gowdaskr1997@gmail.com');
                 });
             }
 
@@ -907,7 +915,7 @@ section[id] {
             if (bottomMail) {
                 bottomMail.addEventListener('click', (e) => {
                     e.preventDefault();
-                    openGmailCompose('sanketarali5@gmail.com');
+                    openGmailCompose('gowdaskr1997@gmail.com');
                 });
             }
         });
@@ -915,4 +923,3 @@ section[id] {
     
 </body>
 </html>
-        
