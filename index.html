@@ -7,6 +7,9 @@
     <link rel="icon" href="https://assets.vercel.com/image/upload/front/favicon/vercel/180x180.png" type="image/png">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://kit.fontawesome.com/a1a1f0a1c6.js" crossorigin="anonymous"></script>
     <style>
@@ -54,15 +57,25 @@
             -moz-osx-font-smoothing: grayscale;
         }
 
-        .gradient-bg { position: relative; z-index: 1; }
+        .gradient-bg {
+            position: relative;
+            z-index: 1;
+        }
+
         .gradient-bg::before {
             content: '';
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             background-image: radial-gradient(circle at 50% 10%, rgba(255, 255, 255, 0.05) 0%, transparent 50%),
-                             radial-gradient(circle at 50% 90%, rgba(255, 255, 255, 0.05) 0%, transparent 50%),
-                             linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-                             linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-            background-size: 50px 50px; opacity: 0.2; z-index: -1;
+                                 radial-gradient(circle at 50% 90%, rgba(255, 255, 255, 0.05) 0%, transparent 50%),
+                                 linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                                 linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 50px 50px;
+            opacity: 0.2;
+            z-index: -1;
         }
 
         @keyframes float {
@@ -71,82 +84,128 @@
             100% { transform: translateY(0px) rotate(0deg); }
         }
 
-        .hero-image-container { animation: float 4s ease-in-out infinite; }
-        h1, h2, h3, .card h3, .text-white { color: var(--heading-color) !important; }
+        .hero-image-container {
+            animation: float 4s ease-in-out infinite;
+        }
+
+        /* Make components that used explicit white follow the theme */
+        h1, h2, h3, .card h3, .text-white {
+            color: var(--heading-color) !important;
+        }
         
         .projects-grid .card {
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
         }
 
-        .projects-grid .card:hover { transform: perspective(1000px) scale(1.02); }
+        .projects-grid .card:hover {
+    transform: perspective(1000px) scale(1.02);
+}
 
-        .projects-grid .card {
-            max-width: 480px; 
-            width: auto !important;
-            margin: 0 auto !important;
-            padding: 1rem !important; 
-        }
+.projects-grid .card .parallax-container {
+    transition: transform 0.1s ease-out;
+}
 
-        @media (max-width: 767px) {
-            .projects-grid .card {
-                max-width: none;
-                width: 100% !important;
-                margin: 0 !important;
-            }
-        }
-        
-        .nav-link:hover {
-            transform: scale(1.05);
-            color: var(--heading-color) !important;
-        }
+/* Constrain project cards to a comfortable width on larger screens */
+.projects-grid .card {
+    max-width: 480px;
+    width: auto !important;
+    margin: 0 auto !important;
+    padding: 1rem !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); /* Added for smoother scaling */
+}
 
-        header { background-color: var(--card-color) !important; }
-        section[id] { scroll-margin-top: 72px; }
+/* Responsive layout for small screens */
+@media (max-width: 767px) {
+    .projects-grid .card {
+        max-width: none;
+        width: 100% !important;
+        margin: 0 !important;
+    }
+}
 
-        .btn-magic {
-            border: 1px solid var(--btn-border);
-            background-color: var(--btn-bg);
-            transition: all 0.3s ease;
-        }
-        .btn-magic:hover {
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
-            transform: scale(1.02);
-            background-color: var(--hover-btn-bg);
-        }
+.nav-link:hover {
+    transform: scale(1.05);
+    color: var(--heading-color) !important;
+}
 
-        .hover-glow { transition: box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
-        .hover-glow:hover { box-shadow: 0 0 20px rgba(255, 255, 255, 0.1), 0 0 40px rgba(255, 255, 255, 0.05); }
+header {
+    background-color: var(--card-color) !important;
+}
 
-        .card {
-            background-color: var(--card-color) !important;
-            border-color: var(--border-color) !important;
-            color: var(--text-color) !important;
-        }
-        .card, .card * { color: var(--text-color) !important; }
-        .text-stone-300, .text-stone-400 { color: var(--muted-text-color) !important; }
-        .bg-stone-950 { background-color: var(--bg-color) !important; }
-        .bg-stone-900 { background-color: var(--card-color) !important; }
-        .border-stone-800 { border-color: var(--border-color) !important; }
-        .bg-stone-800 { background-color: var(--btn-bg) !important; }
-        .border-stone-700 { border-color: var(--btn-border) !important; }
+section[id] {
+    scroll-margin-top: 72px;
+}
+
+/* Combined .btn-magic styles for clarity */
+.btn-magic {
+    border: 1px solid var(--btn-border);
+    background-color: var(--btn-bg) !important;
+    color: var(--text-color) !important;
+    transition: all 0.3s ease;
+}
+
+.btn-magic:hover {
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+    transform: scale(1.02);
+    background-color: var(--hover-btn-bg) !important;
+}
+
+.hover-glow {
+    transition: box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hover-glow:hover {
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.1), 0 0 40px rgba(255, 255, 255, 0.05);
+}
+
+.card, .card * {
+    background-color: var(--card-color);
+    border-color: var(--border-color);
+    color: var(--text-color) !important;
+}
+
+/* Utility color overwrites using variables */
+.text-stone-300, .text-stone-400 { color: var(--muted-text-color) !important; }
+
+.bg-stone-950 { background-color: var(--bg-color) !important; }
+.bg-stone-900 { background-color: var(--card-color) !important; }
+.border-stone-800 { border-color: var(--border-color) !important; }
+.bg-stone-800 { background-color: var(--btn-bg) !important; }
+.border-stone-700 { border-color: var(--btn-border) !important; }
+
+.group-hover\:bg-gradient-to-br {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.group:hover .group-hover\:bg-gradient-to-br {
+    opacity: 1;
+}
+
 
         #project-1-gradient { background-image: linear-gradient(to bottom right, var(--gradient-1), transparent); }
         #project-2-gradient { background-image: linear-gradient(to bottom right, var(--gradient-2), transparent); }
         #project-3-gradient { background-image: linear-gradient(to bottom right, var(--gradient-3), transparent); }
         #project-4-gradient { background-image: linear-gradient(to bottom right, var(--gradient-4), transparent); }
         #project-5-gradient { background-image: linear-gradient(to bottom right, var(--gradient-5), transparent); }
-        .bg-blue-400 { background-color: #60a5fa; }
+        
+        .bg-blue-400 { background-color: #60a5fa; } /* ನಿಮ್ಮ ಪೋರ್ಟ್‌ಫೋಲಿಯೊದ ಹೈಲೈಟ್ ಕಲರ್ */
 
         footer {
             background: linear-gradient(to bottom, var(--bg-color) 0%, var(--card-color) 100%) !important;
             border-color: var(--border-color) !important;
             color: var(--muted-text-color) !important;
         }
+        footer a { color: var(--muted-text-color) !important; }
+        footer a:hover { color: var(--heading-color) !important; }
 
         .map-wrapper iframe {
-            width: 100%; height: auto; min-height: 280px;
-            aspect-ratio: 16 / 9; display: block;
+            width: 100%;
+            height: auto;
+            min-height: 280px;
+            aspect-ratio: 16 / 9;
+            display: block;
         }
 
         #mobile-nav {
@@ -154,19 +213,82 @@
             color: var(--text-color) !important;
             backdrop-filter: blur(6px);
         }
-        
+
+        #mobile-nav a,
+        #mobile-nav button,
+        #mobile-nav .text-stone-200,
+        #mobile-nav .text-stone-300 {
+            color: var(--muted-text-color) !important;
+        }
+
+        #mobile-nav-close {
+            color: var(--heading-color) !important;
+        }
+
+        @media (max-width: 767px) {
+            header .container { position: relative; }
+            #mobile-menu-btn {
+                position: absolute;
+                left: 1rem;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+            #theme-toggle { position: absolute; right: 1rem; top: 50%; transform: translateY(-50%); }
+        }
+
         #bottom-contacts {
-            position: fixed; left: 50%; bottom: 1rem; transform: translateX(-50%);
-            z-index: 70; display: flex; gap: 0.6rem; align-items: center;
-            padding: 0.45rem 0.6rem; border-radius: 9999px;
-            background-color: var(--card-color); border: 1px solid var(--border-color);
-            backdrop-filter: blur(6px); box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+            position: fixed;
+            left: 50%;
+            right: auto;
+            bottom: 1rem;
+            transform: translateX(-50%);
+            z-index: 70;
+            display: flex;
+            gap: 0.6rem;
+            align-items: center;
+            padding: 0.45rem 0.6rem;
+            border-radius: 9999px;
+            background-color: var(--card-color);
+            border: 1px solid var(--border-color);
+            backdrop-filter: blur(6px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+            transition: transform 200ms ease, opacity 200ms ease, background-color 200ms ease, border-color 200ms ease;
         }
 
         #bottom-contacts .contact-icon {
-            color: var(--muted-text-color); font-size: 1.45rem;
-            padding: 0.5rem; border-radius: 12px; display: inline-flex;
-            transition: all 150ms ease;
+            color: var(--muted-text-color);
+            font-size: 1.45rem;
+            padding: 0.5rem;
+            border-radius: 12px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 150ms ease, box-shadow 180ms ease, color 150ms ease, background-color 150ms ease;
+            will-change: transform, box-shadow;
+        }
+
+        #bottom-contacts .contact-icon:hover,
+        #bottom-contacts .contact-icon:focus {
+            transform: translateY(-3px) scale(1.08);
+            color: var(--heading-color);
+            background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+            box-shadow: 0 6px 18px rgba(96,165,250,0.12), 0 2px 6px rgba(0,0,0,0.18);
+            outline: none;
+        }
+
+        #bottom-contacts .contact-icon:focus-visible {
+            box-shadow: 0 0 0 3px rgba(99,102,241,0.14), 0 6px 18px rgba(96,165,250,0.08);
+        }
+        /* Slightly larger gap and vertical padding on taller screens */
+        @media (min-width: 1024px) {
+            #bottom-contacts { gap: 0.75rem; padding: 0.5rem 0.8rem; }
+            #bottom-contacts .contact-icon { font-size: 1.6rem; padding: 0.6rem; }
+        }
+
+        /* On very small screens keep centered and ensure it doesn't cover inputs */
+        @media (max-width: 420px) {
+            #bottom-contacts { bottom: 0.7rem; transform: translateX(-50%); }
+            #bottom-contacts .contact-icon { font-size: 1.35rem; padding: 0.45rem; }
         }
     </style>
 </head>
@@ -174,56 +296,154 @@
 
     <header class="py-6 sticky top-0 z-50 bg-stone-950/80 backdrop-blur-md transition-colors">
         <div class="container mx-auto px-4 flex justify-between items-center">
-            <a href="#" class="text-2xl font-bold">SKR</a>
+            <a href="#" class="text-2xl font-bold"></a>
             <nav id="main-nav" class="hidden md:flex items-center space-x-6">
-                <a href="#experience" class="nav-link text-sm text-stone-300">Experience</a>
-                <a href="#education" class="nav-link text-sm text-stone-300">Education</a>
-                <a href="#projects" class="nav-link text-sm text-stone-300">Projects</a>
-                <a href="#skills" class="nav-link text-sm text-stone-300">Skills</a>
-                <a href="#contact" class="nav-link text-sm text-stone-300">Contact</a>
-                <a id="download-resume-desktop" href="#" class="btn-magic px-3 py-2 rounded text-sm">Resume</a>
+                
+                <a href="#experience" class="nav-link text-sm text-stone-300 hover:text-white transition">Experience</a>
+                <a href="#education" class="nav-link text-sm text-stone-300 hover:text-white transition">Education</a>
+                <a href="#projects" class="nav-link text-sm text-stone-300 hover:text-white transition">Projects</a>
+                <a href="#skills" class="nav-link text-sm text-stone-300 hover:text-white transition">Skills</a>
+                <a href="#contact" class="nav-link text-sm text-stone-300 hover:text-white transition">Contact</a>
+                <a id="download-resume-desktop" href="ನಿಮ್ಮ_ಲಿಂಕ್_ಇಲ್ಲಿ" target="_blank" rel="noopener noreferrer" class="nav-link text-sm text-stone-300 hover:text-white transition btn-magic px-3 py-2 rounded" aria-label="Download resume (desktop)">Resume</a>
             </nav>
-            <button id="mobile-menu-btn" class="md:hidden text-stone-300"><i class="fas fa-bars"></i></button>
-            <button id="theme-toggle" class="ml-4 text-stone-300 px-3 py-2 rounded-md"><i id="theme-icon" class="fas fa-moon"></i></button>
+            <button id="mobile-menu-btn" class="md:hidden text-stone-300" aria-label="Open mobile menu" aria-expanded="false">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                </svg>
+            </button>
+            <button id="theme-toggle" class="ml-4 text-stone-300 inline-flex items-center px-3 py-2 rounded-md" aria-label="Toggle theme">
+                <i id="theme-icon" class="fas fa-moon"></i>
+            </button>
+            <nav id="mobile-nav" class="md:hidden fixed top-0 left-0 right-0 transform -translate-y-full transition-transform duration-300 bg-stone-900/95 backdrop-blur-sm z-50">
+                <div class="px-4 py-4 flex items-center justify-between border-b border-stone-800">
+                    <div class="text-lg font-semibold text-stone-200">Menu</div>
+                    <button id="mobile-nav-close" class="text-stone-200 text-2xl" aria-label="Close menu">&times;</button>
+                </div>
+                <div class="px-4 py-6 space-y-2">
+                    
+                    <a href="#experience" class="block px-3 py-2 text-sm text-stone-300 hover:text-white">Experience</a>
+                    <a href="#education" class="block px-3 py-2 text-sm text-stone-300 hover:text-white">Education</a>
+                    <a href="#projects" class="block px-3 py-2 text-sm text-stone-300 hover:text-white">Projects</a>
+                    <a href="#skills" class="block px-3 py-2 text-sm text-stone-300 hover:text-white">Skills</a>
+                    <a href="#contact" class="block px-3 py-2 text-sm text-stone-300 hover:text-white">Contact</a>
+                    <a id="download-resume-mobile" href="ನಿಮ್ಮ_ಲಿಂಕ್_ಇಲ್ಲಿ" target="_blank" rel="noopener noreferrer" class="block px-3 py-2 text-sm text-stone-300 hover:text-white btn-magic rounded" aria-label="Download resume (mobile)">Resume</a>
+                </div>
+            </nav>
         </div>
     </header>
 
     <main class="container mx-auto px-4">
-        <section id="hero" class="min-h-[60vh] flex items-center justify-center text-center py-12">
-            <div class="max-w-4xl w-full">
-                <div class="hero-image-container mb-6">
-                    <img src="https://github.com/sudarshan-kr/sudarshan-kr.github.io/blob/main/my_new_picture.png?raw=true" alt="Sudarshan K R" class="rounded-full w-40 h-40 mx-auto object-cover border-4 border-blue-400 shadow-xl" />
+    <section id="hero" class="min-h-[60vh] flex items-center justify-center text-center py-8 md:py-12">
+   <div class="max-w-4xl w-full">
+  <div class="hero-image-container mb-6">
+        <img
+            src="https://github.com/sudarshan-kr/sudarshan-kr.github.io/blob/main/my_new_picture.png?raw=true"
+            alt="Sudarshan K R Profile Picture"
+            loading="lazy"
+            onerror="this.onerror=null;this.src='./assets/profile-fallback.svg'"
+            class="rounded-full w-40 h-40 mx-auto mb-3 object-cover shadow-xl border-2 border-stone-800"
+        />
+
+  </div>
+  <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight mb-3">
+    Hi, I'm <span class="text-blue-400">Sudarshan</span>
+  </h1>
+  <p class="text-sm md:text-lg text-stone-400 max-w-2xl mx-auto mb-6">
+    I'm a DevOps Engineer passionate about automating workflows, deploying scalable applications, and optimizing cloud infrastructure for performance and reliability.
+  </p>
+  <div class="flex flex-col sm:flex-row justify-center items-center space-y-3 sm:space-y-0 sm:space-x-4">
+    <a href="#contact" class="btn-magic text-sm px-6 py-3 rounded-full border border-stone-700 bg-stone-800 hover:bg-stone-700 transition inline-block" aria-label="Go to footer">
+      Get in Touch
+    </a>
+    <a href="#projects" class="btn-magic text-sm px-6 py-3 rounded-full border border-stone-700 bg-stone-800 hover:bg-stone-700 transition inline-block" aria-label="Explore Projects">
+      Explore Projects
+    </a>
+  </div>
+</div>
+
+</section>
+
+<section id="experience" class="py-12">
+    <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Experience</h2>
+    <div class="max-w-3xl mx-auto space-y-8">
+        
+        <div class="card bg-stone-900 border border-stone-800 rounded-2xl p-6 hover:hover-glow transition-all">
+            <div class="flex justify-between items-center mb-4">
+                <div class="flex items-center space-x-4">
+                    <img src="https://betatestsolutions.com/wp-content/uploads/2024/02/pic.jpg" alt="Beta Test Solutions" class="w-12 h-12 object-contain rounded-full">
+                    <h3 class="text-xl font-semibold">Beta Test Solutions</h3>
                 </div>
-                <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold mb-3">Hi, I'm <span class="text-blue-400">Sudarshan K R</span></h1>
-                <p class="text-lg text-stone-400 max-w-2xl mx-auto mb-6">DevOps Engineer passionate about automating workflows and optimizing cloud infrastructure.</p>
-                <div class="flex justify-center space-x-4">
-                    <a href="#contact" class="btn-magic px-6 py-3 rounded-full text-sm">Get in Touch</a>
-                    <a href="#projects" class="btn-magic px-6 py-3 rounded-full text-sm">Explore Projects</a>
-                </div>
+                <span class="text-sm text-stone-400 whitespace-nowrap">May 2025 - October 2025</span>
             </div>
-        </section>
+            <p class="text-sm text-stone-300 mb-4 font-medium">DevOps Engineer Intern</p>
+            <ul class="list-disc list-outside text-sm text-stone-400 space-y-2 pl-5">
+                <li>Configured New Relic alerts to ensure immediate notification for system and database downtimes across staging and production environments, reducing downtime by 20%.</li>
+                <li>Experienced in setting up end-to-end CI/CD pipelines in Azure DevOps to automate the build and deployment of Node.js applications to AWS EC2 instances, improving deployment efficiency by 40%.</li>
+                <li>Collected and analyzed detailed information on AWS services used in each project, resulting in a 30% reduction in operational time.</li>
+                <li>Automated EC2 instance start and application stop for ETL services using IAM roles, CloudWatch, SNS, and Lambda functions, reducing manual intervention by 40%.</li>
+                <li>Managed domain setup in Route 53, including primary, 2nd-level, and 3rd-level subdomains, attaching DNS records, and performing cost estimation.</li>
+                <li>Created EC2 launch templates for ETL services with pre-installed libraries using user-data scripts for automated environment setup.</li>
+                <li>Revoke the access in AWS services and rotate the credentials in services and the pipeline.</li>
+                <li>Twingate setup for secure database connection.</li>
+                <li>Provisioned and managed AWS infrastructure using Terraform and Terragrunt.</li>
+                <li>Implemented infrastructure as code using Terraform and Terragrunt, managing AWS resources including EC2, EKS.</li>
+            </ul>
+        </div>
 
-        </main>
+        <div class="card bg-stone-900 border border-stone-800 rounded-2xl p-6 hover:hover-glow transition-all">
+            <div class="flex justify-between items-center mb-4">
+                <div class="flex items-center space-x-4">
+                    <img src="https://cdn.tracxn.com/images/seo/social/companies/tensorgo-overview-1752706970640.webp" alt="TensorGo" class="w-12 h-12 object-contain rounded-full">
+                    <h3 class="text-xl font-semibold">TensorGo</h3>
+                </div>
+                <span class="text-sm text-stone-400 whitespace-nowrap">August 2024 - October 2024</span>
+            </div>
+            <p class="text-sm text-stone-300 mb-4 font-medium">DevOps Engineer Intern</p>
+            <ul class="list-disc list-outside text-sm text-stone-400 space-y-2 pl-5">
+                <li>Assisted in setting up CI/CD pipelines for various development projects, streamlining the deployment process and reducing manual effort by 25%.</li>
+                <li>Coordinated version control with Git and managed deployments with Jenkins.</li>
+                <li>Worked on Azure VMs, including creating snapshots and managing access with SSH keys.</li>
+                <li>Familiarized with monitoring tools like Prometheus and Grafana.</li>
+            </ul>
+        </div>
 
-    <div id="bottom-contacts">
-        <a href="https://github.com/sudarshan-kr" target="_blank" class="contact-icon"><i class="fab fa-github"></i></a>
-        <a href="#" target="_blank" class="contact-icon"><i class="fab fa-linkedin"></i></a>
-        <a href="#" id="bottom-mail-btn" class="contact-icon"><i class="fas fa-envelope"></i></a>
+        <div class="card bg-stone-900 border border-stone-800 rounded-2xl p-6 hover:hover-glow transition-all">
+            <div class="flex justify-between items-center mb-4">
+                <div class="flex items-center space-x-4">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTju0Jab4kLoOmrdn3-xngmLQoUuHebh3NhHQ&s" alt="Trainee" class="w-12 h-12 object-contain rounded-full">
+                    <h3 class="text-xl font-semibold">Devops Engineer Trainee</h3>
+                </div>
+                <span class="text-sm text-stone-400 whitespace-nowrap">October 2023 - April 2024</span>
+            </div>
+            <p class="text-sm text-stone-300 mb-4 font-medium">DevOps Trainee</p>
+            <ul class="list-disc list-outside text-sm text-stone-400 space-y-2 pl-5">
+                <li>Gained good knowledge of Linux commands and basic Git commands.</li>
+                <li>Worked with AWS services like EC2, IAM, VPC, S3, SNS, RDS, and Route 53.</li>
+                <li>Created Auto-Scaling Groups and configured Auto-Scaling using Launch Configurations to ensure application scalability and high availability.</li>
+                <li>Proficient in setting up CI/CD Pipelines using Jenkins.</li>
+            </ul>
+        </div>
     </div>
+</section>
 
-    <script>
-        // ಸಾಲು 923 ರವರೆಗೆ ನಿಮ್ಮ ಎಲ್ಲಾ ಹಳೆಯ ಸ್ಕ್ರಿಪ್ಟ್‌ಗಳು ಇಲ್ಲಿ ಅಡಕವಾಗಿರುತ್ತವೆ.
-        document.addEventListener('DOMContentLoaded', () => {
-            const root = document.documentElement;
-            const themeBtn = document.getElementById('theme-toggle');
-            themeBtn.addEventListener('click', () => {
-                const current = root.getAttribute('data-theme');
-                const next = current === 'dark' ? 'light' : 'dark';
-                root.setAttribute('data-theme', next);
-                document.getElementById('theme-icon').className = next === 'dark' ? 'fas fa-moon' : 'fas fa-sun';
-            });
-            // ... (ಉಳಿದ ಸ್ಕ್ರಿಪ್ಟ್ ಸಾಲುಗಳು)
-        });
-    </script>
-</body>
-</html>
+<section id="education" class="py-12">
+    <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Education</h2>
+    <div class="max-w-3xl mx-auto space-y-8">
+        
+        <div class="card bg-stone-900 border border-stone-800 rounded-2xl p-6 hover:hover-glow transition-all">
+            <div class="flex justify-between items-center mb-4">
+                <div class="flex items-center space-x-4">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqFXeZMVoGV90dCBYNbrKVZjnEWRF1YcAF4A&s" alt="New Horizon College of Engineering" class="w-12 h-12 object-contain rounded-full border border-stone-700">
+                    <h3 class="text-xl font-semibold">Bachelor of Engineering</h3>
+                </div>
+                <span class="text-sm text-stone-400 whitespace-nowrap">2020 - 2024</span>
+            </div>
+            <p class="text-sm text-stone-300 mb-4">New Horizon College of Engineering</p>
+            <ul class="list-disc list-outside text-sm text-stone-400 space-y-2 pl-5">
+                <li>Completed Bachelor of Engineering and gained expertise in DevOps practices.</li>
+            </ul>
+        </div>
+        
+    </div>
+</section>
+        
