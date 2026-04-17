@@ -106,16 +106,15 @@
             transition: transform 0.1s ease-out;
         }
 
-        /* Constrain project cards to a comfortable width on larger screens and center them in their columns.
-           Keep full-width behaviour on small screens for a responsive layout. */
+        /* Constrain project cards to a comfortable width on larger screens and center them in their columns. */
         .projects-grid .card {
-            max-width: 480px; /* narrower cards to match reference */
+            max-width: 480px;
             width: auto !important;
-            margin: 0 auto !important; /* center inside the grid column */
-            padding: 1rem !important; /* tighten internal padding (p-4 ~= 1rem) */
+            margin: 0 auto !important;
+            padding: 1rem !important;
         }
 
-        /* On narrow screens allow cards to be full-width to use available space */
+        /* On narrow screens allow cards to be full-width */
         @media (max-width: 767px) {
             .projects-grid .card {
                 max-width: none;
@@ -128,19 +127,15 @@
             transform: scale(1.05);
         }
 
-        /* Ensure nav link hover color follows theme */
         .nav-link:hover {
             color: var(--heading-color) !important;
         }
 
-        /* Header background should follow theme variables (override utility with opacity suffix) */
         header {
             background-color: var(--card-color) !important;
         }
 
-        /* Ensure anchored sections are visible below the sticky header when navigating via in-page links */
         section[id] {
-            /* default offset; JS will adjust dynamically on load to match header height */
             scroll-margin-top: 72px;
         }
 
@@ -167,20 +162,16 @@
             border-color: var(--border-color) !important;
             color: var(--text-color) !important;
         }
-        /* Ensure every text node inside a card follows the theme color (overrides utility classes like text-white) */
         .card, .card * {
             color: var(--text-color) !important;
         }
-        /* overwrite utility text colors to use theme variables */
         .text-stone-300 { color: var(--muted-text-color) !important; }
         .text-stone-400 { color: var(--muted-text-color) !important; }
-        /* background utilities */
         .bg-stone-950 { background-color: var(--bg-color) !important; }
         .bg-stone-900 { background-color: var(--card-color) !important; }
         .border-stone-800 { border-color: var(--border-color) !important; }
         .bg-stone-800 { background-color: var(--btn-bg) !important; }
         .border-stone-700 { border-color: var(--btn-border) !important; }
-        /* buttons and small elements */
         .btn-magic {
             background-color: var(--btn-bg) !important;
             border-color: var(--btn-border) !important;
@@ -200,7 +191,6 @@
         #project-4-gradient { background-image: linear-gradient(to bottom right, var(--gradient-4), transparent); }
         #project-5-gradient { background-image: linear-gradient(to bottom right, var(--gradient-5), transparent); }
         .bg-blue-400 { background-color: #60a5fa; }
-        /* Footer should follow theme variables */
         footer {
             background: linear-gradient(to bottom, var(--bg-color) 0%, var(--card-color) 100%) !important;
             border-color: var(--border-color) !important;
@@ -208,7 +198,6 @@
         }
         footer a { color: var(--muted-text-color) !important; }
         footer a:hover { color: var(--heading-color) !important; }
-        /* Map wrapper for responsive embed */
         .map-wrapper iframe {
             width: 100%;
             height: auto;
@@ -216,40 +205,31 @@
             aspect-ratio: 16 / 9;
             display: block;
         }
-        /* Make the mobile full-width panel follow the current theme */
         #mobile-nav {
-            /* Use theme card color for the panel background */
             background-color: var(--card-color) !important;
             color: var(--text-color) !important;
-            /* Keep backdrop blur behavior from the utility class */
             backdrop-filter: blur(6px);
         }
-        /* Ensure links and buttons inside the mobile nav use themed colors */
         #mobile-nav a,
         #mobile-nav button,
         #mobile-nav .text-stone-200,
         #mobile-nav .text-stone-300 {
             color: var(--muted-text-color) !important;
         }
-        /* Make the close icon visible and follow heading color */
         #mobile-nav-close {
             color: var(--heading-color) !important;
         }
-        /* Center the mobile hamburger and keep theme toggle on the right on small screens */
         @media (max-width: 767px) {
             header .container { position: relative; }
-            /* place the mobile hamburger at the left corner (small inset) and vertically center it */
             #mobile-menu-btn {
                 position: absolute;
                 left: 1rem;
                 top: 50%;
                 transform: translateY(-50%);
             }
-            /* keep the theme toggle at the right side, vertically centered */
             #theme-toggle { position: absolute; right: 1rem; top: 50%; transform: translateY(-50%); }
         }
 
-        /* Bottom-fixed contact bar uses theme variables so it adapts to light/dark themes */
         #bottom-contacts {
             position: fixed;
             left: 50%;
@@ -262,7 +242,6 @@
             align-items: center;
             padding: 0.45rem 0.6rem;
             border-radius: 9999px;
-            /* Use theme card color and border so it blends in both themes */
             background-color: var(--card-color);
             border: 1px solid var(--border-color);
             backdrop-filter: blur(6px);
@@ -270,10 +249,9 @@
             transition: transform 200ms ease, opacity 200ms ease, background-color 200ms ease, border-color 200ms ease;
         }
 
-        /* Larger interactive icons with a smooth hover/focus effect */
         #bottom-contacts .contact-icon {
             color: var(--muted-text-color);
-            font-size: 1.45rem; /* larger icon */
+            font-size: 1.45rem;
             padding: 0.5rem;
             border-radius: 12px;
             display: inline-flex;
@@ -283,7 +261,6 @@
             will-change: transform, box-shadow;
         }
 
-        /* Hover and focus: pop + glow */
         #bottom-contacts .contact-icon:hover,
         #bottom-contacts .contact-icon:focus {
             transform: translateY(-3px) scale(1.08);
@@ -293,21 +270,82 @@
             outline: none;
         }
 
-        /* Keyboard focus visible outline for accessibility */
         #bottom-contacts .contact-icon:focus-visible {
             box-shadow: 0 0 0 3px rgba(99,102,241,0.14), 0 6px 18px rgba(96,165,250,0.08);
         }
 
-        /* Slightly larger gap and vertical padding on taller screens */
         @media (min-width: 1024px) {
             #bottom-contacts { gap: 0.75rem; padding: 0.5rem 0.8rem; }
             #bottom-contacts .contact-icon { font-size: 1.6rem; padding: 0.6rem; }
         }
 
-        /* On very small screens keep centered and ensure it doesn't cover inputs */
         @media (max-width: 420px) {
             #bottom-contacts { bottom: 0.7rem; transform: translateX(-50%); }
             #bottom-contacts .contact-icon { font-size: 1.35rem; padding: 0.45rem; }
+        }
+
+        /* Architecture diagram modal */
+        .arch-modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.85);
+            z-index: 200;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+        .arch-modal-overlay.active {
+            display: flex;
+        }
+        .arch-modal-inner {
+            background: var(--card-color);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            max-width: 90vw;
+            max-height: 90vh;
+            overflow: auto;
+            padding: 1.5rem;
+            position: relative;
+        }
+        .arch-modal-inner img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 0.5rem;
+        }
+        .arch-modal-close {
+            position: absolute;
+            top: 0.75rem;
+            right: 0.75rem;
+            background: var(--btn-bg);
+            border: 1px solid var(--btn-border);
+            border-radius: 50%;
+            width: 2rem;
+            height: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.1rem;
+            color: var(--heading-color) !important;
+        }
+        .view-arch-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.75rem;
+            padding: 0.4rem 0.85rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            margin-top: 0.5rem;
+            background: var(--btn-bg);
+            border: 1px solid var(--btn-border);
+            color: var(--text-color) !important;
+            transition: all 0.2s ease;
+        }
+        .view-arch-btn:hover {
+            background: var(--hover-btn-bg);
+            transform: scale(1.02);
         }
     </style>
 </head>
@@ -318,7 +356,6 @@
         <div class="container mx-auto px-4 flex justify-between items-center">
             <a href="#" class="text-2xl font-bold"></a>
             <nav id="main-nav" class="hidden md:flex items-center space-x-6">
-                
                 <a href="#experience" class="nav-link text-sm text-stone-300 hover:text-white transition">Experience</a>
                 <a href="#education" class="nav-link text-sm text-stone-300 hover:text-white transition">Education</a>
                 <a href="#projects" class="nav-link text-sm text-stone-300 hover:text-white transition">Projects</a>
@@ -335,14 +372,13 @@
             <button id="theme-toggle" class="ml-4 text-stone-300 inline-flex items-center px-3 py-2 rounded-md" aria-label="Toggle theme">
                 <i id="theme-icon" class="fas fa-moon"></i>
             </button>
-            <!-- Mobile full-width panel nav (hidden on desktop) -->
+            <!-- Mobile full-width panel nav -->
             <nav id="mobile-nav" class="md:hidden fixed top-0 left-0 right-0 transform -translate-y-full transition-transform duration-300 bg-stone-900/95 backdrop-blur-sm z-50">
                 <div class="px-4 py-4 flex items-center justify-between border-b border-stone-800">
                     <div class="text-lg font-semibold text-stone-200">Menu</div>
                     <button id="mobile-nav-close" class="text-stone-200 text-2xl" aria-label="Close menu">&times;</button>
                 </div>
                 <div class="px-4 py-6 space-y-2">
-                    
                     <a href="#experience" class="block px-3 py-2 text-sm text-stone-300 hover:text-white">Experience</a>
                     <a href="#education" class="block px-3 py-2 text-sm text-stone-300 hover:text-white">Education</a>
                     <a href="#projects" class="block px-3 py-2 text-sm text-stone-300 hover:text-white">Projects</a>
@@ -355,7 +391,7 @@
     </header>
 
     <main class="container mx-auto px-4">
-    <!-- Hero Section (reduced height/padding to remove large gap) -->
+    <!-- Hero Section -->
     <section id="hero" class="min-h-[60vh] flex items-center justify-center text-center py-8 md:py-12">
    <div class="max-w-4xl w-full">
   <div class="hero-image-container mb-6">
@@ -366,7 +402,6 @@
               onerror="this.onerror=null;this.src='./assets/profile-fallback.svg'"
               class="mx-auto mb-3 w-44 h-52 rounded-full object-contain object-top bg-white"
         />
-
   </div>
   <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight mb-3">
     Hi, I'm <span class="text-blue-400">Sudarshan K R</span>
@@ -383,7 +418,6 @@
     </a>
   </div>
 </div>
-
 </section>
 
 
@@ -392,7 +426,32 @@
     <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Experience</h2>
     <div class="max-w-3xl mx-auto space-y-8">
 
-        <!-- 1️⃣ Betatest Solutions -->
+        <!-- 1️⃣ Enhub.ai (Current) -->
+        <div class="card bg-stone-900 border border-stone-800 rounded-2xl p-6 hover:hover-glow transition-all">
+            <div class="flex justify-between items-center mb-4">
+                <div class="flex items-center space-x-4">
+                    <div class="w-12 h-12 flex items-center justify-center rounded-full bg-blue-600 text-white text-sm font-bold">
+                        EN
+                    </div>
+                    <h3 class="text-xl font-semibold">Enhub.ai</h3>
+                </div>
+                <span class="text-sm text-stone-400">Jan 2026 – Present</span>
+            </div>
+            <p class="text-sm text-stone-300 mb-4">Associate Cloud Engineer · Bengaluru, India</p>
+
+            <ul class="list-disc list-outside text-sm text-stone-400 space-y-2 pl-5">
+                <li>Led migration of applications and infrastructure from AWS to GCP ensuring minimal downtime and zero data loss.</li>
+                <li>Deployed and managed applications on Compute Engine, Cloud Run, and App Engine based on workload requirements.</li>
+                <li>Provisioned and managed GKE clusters (Standard &amp; Autopilot) for containerized microservices.</li>
+                <li>Designed VPC networks, subnets, firewall rules, and NAT gateways for secure multi-tier communication.</li>
+                <li>Configured site-to-site VPN for secure hybrid connectivity between AWS and GCP environments.</li>
+                <li>Set up CDC pipelines using Fivetran and SQL Server CDC for real-time database replication across cloud platforms.</li>
+                <li>Managed DNS configuration using Cloud DNS and Route 53 for multi-domain environments.</li>
+                <li>Implemented GCP Load Balancer with SSL termination for high-availability frontend deployments.</li>
+            </ul>
+        </div>
+
+        <!-- 2️⃣ Betatest Solutions -->
         <div class="card bg-stone-900 border border-stone-800 rounded-2xl p-6 hover:hover-glow transition-all">
             <div class="flex justify-between items-center mb-4">
                 <div class="flex items-center space-x-4">
@@ -417,7 +476,7 @@
             </ul>
         </div>
 
-        <!-- 2️⃣ TensorGo Pvt Ltd -->
+        <!-- 3️⃣ TensorGo Pvt Ltd -->
         <div class="card bg-stone-900 border border-stone-800 rounded-2xl p-6 hover:hover-glow transition-all">
             <div class="flex justify-between items-center mb-4">
                 <div class="flex items-center space-x-4">
@@ -436,7 +495,7 @@
             </ul>
         </div>
 
-        <!-- 3️⃣ MicroDegree -->
+        <!-- 4️⃣ MicroDegree -->
         <div class="card bg-stone-900 border border-stone-800 rounded-2xl p-6 hover:hover-glow transition-all">
             <div class="flex justify-between items-center mb-4">
                 <div class="flex items-center space-x-4">
@@ -461,16 +520,14 @@
 </section>
 
 
-        <!-- Education Section -->
+<!-- Education Section -->
 <section id="education" class="py-12">
     <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Education</h2>
     <div class="max-w-3xl mx-auto space-y-8">
-        <!-- College 1 -->
         <div class="card bg-stone-900 border border-stone-800 rounded-2xl p-6 hover:hover-glow transition-all">
             <div class="flex justify-between items-center mb-4">
                 <div class="flex items-center space-x-4">
-                    <!-- College Logo -->
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e3/New_Horizon_College_of_Engineering_logo.png" alt="SDM Institute of Technology Logo" class="w-12 h-12 object-contain rounded-full">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e3/New_Horizon_College_of_Engineering_logo.png" alt="New Horizon College of Engineering Logo" class="w-12 h-12 object-contain rounded-full">
                     <h3 class="text-xl font-semibold">Bachelor of Engineering</h3>
                 </div>
                 <span class="text-sm text-stone-400 whitespace-nowrap">2018 - 2022</span>
@@ -480,258 +537,358 @@
                 <li>Graduated in Bachelor of Engineering.</li>
             </ul>
         </div>
-        
-        
     </div>
 </section>
 
 
-         <!-- Projects Section -->
-            <section id="projects" class="py-12">
-                <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Projects</h2>
-                <div class="projects-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-y-6 gap-x-4 max-w-3xl mx-auto px-4">
+<!-- Projects Section -->
+<section id="projects" class="py-12">
+    <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Projects</h2>
+    <div class="projects-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-y-6 gap-x-4 max-w-3xl mx-auto px-4">
 
-<!-- Project Card 1 -->
-               <div class="group card bg-stone-900 border border-stone-800 rounded-2xl p-6 hover-glow transition-all relative overflow-hidden">
-                    <div id="project-5-gradient" class="absolute inset-0 group-hover:bg-gradient-to-br opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    <div class="relative z-10">
-                        <!-- Placeholder image for the project -->
-                        <div class="mb-4">
-                            <img src="https://github.com/sudarshan-kr/sudarshan-kr.github.io/blob/main/AWS%203-Tier%20Web%20Application.png?raw=true" alt="AWS Three Tier Web Architecture" loading="lazy" class="w-full object-contain rounded-lg">
-                        </div>
-                        <!-- icon removed as requested -->
-                        <h3 class="text-lg font-semibold text-white mb-2">AWS Three Tier Web Architecture</h3>
-                        <p class="text-stone-400 text-sm mb-4">In this architecture, a public-facing Application Load Balancer forwards client traffic to our web tier EC2 instances. The web tier is running Nginx webservers that are configured to serve a React.js website and redirects our API calls to the application tier’s internal facing load balancer. The internal facing load balancer then forwards that traffic to the application tier, which is written in Node.js. The application tier manipulates data in an Aurora MySQL multi-AZ database and returns it to our web tier. Load balancing, health checks and autoscaling groups are created at each layer to maintain the availability of this architecture.</p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                           <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">EC2</span>
-                           <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">Auto Scaling Group (ASG)</span>
-                           <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">Application Load Balancer (ALB)</span>
-                           <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">IAM</span>
-                           <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">S3</span>
-                           <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">RDS</span>
-                           <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">VPC</span>
-                           <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">CloudWatch</span>
-                           <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">SNS</span>
-                           <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">Route 53</span>
-                           <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">CloudFront</span>
-
-                        </div>
-                    </div>
+        <!-- Project Card 1 – AWS Three Tier Web Architecture -->
+        <div class="group card bg-stone-900 border border-stone-800 rounded-2xl p-6 hover-glow transition-all relative overflow-hidden">
+            <div id="project-5-gradient" class="absolute inset-0 group-hover:bg-gradient-to-br opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <div class="relative z-10">
+                <div class="mb-4">
+                    <img src="https://github.com/sudarshan-kr/sudarshan-kr.github.io/blob/main/AWS%203-Tier%20Web%20Application.png?raw=true" alt="AWS Three Tier Web Architecture" loading="lazy" class="w-full object-contain rounded-lg">
                 </div>
-
-                <!-- Project Card 2 -->
-
-
-
-                  <div class="group card bg-stone-900 border border-stone-800 rounded-2xl p-6 hover-glow transition-all relative overflow-hidden">
-                    <div id="project-5-gradient" class="absolute inset-0 group-hover:bg-gradient-to-br opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    <div class="relative z-10">
-                        <!-- Placeholder image for the project -->
-                        <div class="mb-10">
-                            <img src="https://github.com/sudarshan-kr/sudarshan-kr.github.io/blob/main/E-kart%20Application%20Deployment.png?raw=true" alt="E-kart Application Deployment" loading="lazy" class="w-full object-contain rounded-lg">
-                        </div>
-                        <!-- icon removed as requested -->
-                        <h3 class="text-lg font-semibold text-white mb-2">E-Kart Application Deployment on Kubernetes</h3>
-                        <p class="text-stone-400 text-sm mb-4">I built a Java-based E-Kart application and deployed it on a private AWS EKS cluster using a complete end-to-end DevOps workflow, where I designed a secure AWS infrastructure with a custom VPC, private subnets, IAM roles, and a bastion host for controlled access. The application was packaged using Maven, containerized with Docker, and the image was pushed securely to AWS ECR, while all Kubernetes manifests were stored in GitHub with ArgoCD implementing a GitOps-based automated deployment process. External traffic was managed through the AWS ALB Ingress Controller for secure and reliable access, featuring Karpenter for intelligent autoscaling of nodes based on demand, with monitoring enabled via Prometheus and Grafana, and final access provided through a custom domain configured in AWS Route 53.</p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">AWS</span>
-                            <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">GitHub</span>
-                            <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">Maven</span>
-                            <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">Jdk</span>
-                            <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">Docker</span>
-                            <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">ECR</span>
-                            <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">Kubernetes</span>
-                            <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">Karpenter</span>
-                            <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">Argo CD</span>
-                            <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">Prometheus</span>
-                            <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">Grafana</span>
-                            <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">Ingess</span>
-                        </div>
-                    </div>
+                <h3 class="text-lg font-semibold text-white mb-2">AWS Three Tier Web Architecture</h3>
+                <p class="text-stone-400 text-sm mb-4">In this architecture, a public-facing Application Load Balancer forwards client traffic to our web tier EC2 instances. The web tier is running Nginx webservers that are configured to serve a React.js website and redirects our API calls to the application tier's internal facing load balancer. The internal facing load balancer then forwards that traffic to the application tier, which is written in Node.js. The application tier manipulates data in an Aurora MySQL multi-AZ database and returns it to our web tier. Load balancing, health checks and autoscaling groups are created at each layer to maintain the availability of this architecture.</p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                   <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">EC2</span>
+                   <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">Auto Scaling Group (ASG)</span>
+                   <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">Application Load Balancer (ALB)</span>
+                   <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">IAM</span>
+                   <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">S3</span>
+                   <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">RDS</span>
+                   <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">VPC</span>
+                   <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">CloudWatch</span>
+                   <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">SNS</span>
+                   <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">Route 53</span>
+                   <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">CloudFront</span>
                 </div>
-
-
-
-                
-                <!-- Project Card 3 -->
-                
-                  <div class="group card bg-stone-900 border border-stone-800 rounded-2xl p-6 hover-glow transition-all relative overflow-hidden">
-                    <div id="project-5-gradient" class="absolute inset-0 group-hover:bg-gradient-to-br opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    <div class="relative z-10">
-                        <div class="mb-4">
-                            <img src="https://github.com/sudarshan-kr/sudarshan-kr.github.io/blob/main/MEAN%20Stack%20Application%20CICD%20Deployment.png?raw=true" alt="Mean Stack Application CICD Deployment" class="w-full object-contain rounded-lg">
-                        </div>
-                        <!-- icon removed as requested -->
-                        <h3 class="text-lg font-semibold text-white mb-2">MEAN Stack CI/CD Deployment – Full-Stack CRUD Application</h3>
-                        <p class="text-stone-400 text-sm mb-4">I built and deployed a full-stack MEAN (MongoDB, Express, Angular, Node.js) CRUD application using complete DevOps automation. The source code was maintained in GitHub and automatically pulled to an AWS EC2 Ubuntu instance through a Jenkins CI/CD pipeline. Both frontend and backend applications were containerized using Docker, while MongoDB was deployed using the official Docker image. Docker Compose was used to orchestrate and run all services together in a single deployment. Jenkins handled building images, pushing them to Docker Hub, and redeploying updated containers on the EC2 server. Nginx was configured as a reverse proxy to route frontend and backend traffic efficiently. Finally, the application was successfully deployed and made accessible via the EC2 public IP, ensuring a reliable and automated deployment workflow.</p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">AWS</span>
-                            <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">Jenkins</span>
-                            <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">Node JS</span>
-                            <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">Nginx</span>
-                            <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">Docker Compose</span>
-                            <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">Mongo DB</span>
-                            <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">YAML</span>
-                            <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">Linux</span>
-                            <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">DevOps</span>
-                            <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">Docker Hub</span>
-                        </div>
-                    </div>
-                </div>
-
-                
             </div>
-        </section>
+        </div>
 
-    <!-- Skills Section -->
-    <section id="skills" class="py-12">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">My Skills</h2>
-            <div class="flex justify-center flex-wrap gap-4 max-w-5xl mx-auto">
-                <!-- Badges using shields.io (logo where available) -->
-                <img src="https://img.shields.io/badge/DevOps-0A66C2?style=for-the-badge&logo=azuredevops&logoColor=white" alt="DevOps" class="h-10 rounded-md" />
-                <img src="https://img.shields.io/badge/AWS-232F3E?style=for-the-badge&logo=amazonaws&logoColor=white" alt="AWS" class="h-10 rounded-md" />
-                <img src="https://img.shields.io/badge/CI--CD-1F2937?style=for-the-badge&logo=githubactions&logoColor=white" alt="CI/CD" class="h-10 rounded-md" />
-                <img src="https://img.shields.io/badge/Kubernetes-326CE5?style=for-the-badge&logo=kubernetes&logoColor=white" alt="Kubernetes" class="h-10 rounded-md" />
-                <img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white" alt="Docker" class="h-10 rounded-md" />
-                <img src="https://img.shields.io/badge/Helm-0F172A?style=for-the-badge&logo=helm&logoColor=white" alt="Helm" class="h-10 rounded-md" />
-                <img src="https://img.shields.io/badge/ArgoCD-2D3748?style=for-the-badge&logo=argocd&logoColor=white" alt="ArgoCD" class="h-10 rounded-md" />
-                <img src="https://img.shields.io/badge/Terraform-623CE4?style=for-the-badge&logo=terraform&logoColor=white" alt="Terraform" class="h-10 rounded-md" />
-                <img src="https://img.shields.io/badge/Ansible-EE0000?style=for-the-badge&logo=ansible&logoColor=white" alt="Ansible" class="h-10 rounded-md" />
-                <img src="https://img.shields.io/badge/Jenkins-D24939?style=for-the-badge&logo=jenkins&logoColor=white" alt="Jenkins" class="h-10 rounded-md" />
-                <img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white" alt="Git" class="h-10 rounded-md" />
-                <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub" class="h-10 rounded-md" />
-                <img src="https://img.shields.io/badge/Maven-C71A36?style=for-the-badge&logo=apachemaven&logoColor=white" alt="Maven" class="h-10 rounded-md" />
-                <img src="https://img.shields.io/badge/Prometheus-E6442E?style=for-the-badge&logo=prometheus&logoColor=white" alt="Prometheus" class="h-10 rounded-md" />
-                <img src="https://img.shields.io/badge/Grafana-F46800?style=for-the-badge&logo=grafana&logoColor=white" alt="Grafana" class="h-10 rounded-md" />
-                <img src="https://img.shields.io/badge/Observability-6B7280?style=for-the-badge" alt="Observability" class="h-10 rounded-md" />
-                <img src="https://img.shields.io/badge/Monitoring-6B7280?style=for-the-badge" alt="Monitoring" class="h-10 rounded-md" />
-                <img src="https://img.shields.io/badge/SonarQube-4E9BCD?style=for-the-badge&logo=sonarqube&logoColor=white" alt="SonarQube" class="h-10 rounded-md" />
-                <img src="https://img.shields.io/badge/Trivy-0F172A?style=for-the-badge&logo=trivy&logoColor=white" alt="Trivy" class="h-10 rounded-md" />
-                <img src="https://img.shields.io/badge/OWASP-EE0000?style=for-the-badge&logo=owasp&logoColor=white" alt="OWASP" class="h-10 rounded-md" />
-                <img src="https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black" alt="Linux" class="h-10 rounded-md" />
-                <img src="https://img.shields.io/badge/Shell-BB8F00?style=for-the-badge&logo=gnubash&logoColor=white" alt="Shell Scripting" class="h-10 rounded-md" />
-                <img src="https://img.shields.io/badge/Nginx-009639?style=for-the-badge&logo=nginx&logoColor=white" alt="Nginx" class="h-10 rounded-md" />
-                <img src="https://img.shields.io/badge/Apache-6B8EBF?style=for-the-badge&logo=apache&logoColor=white" alt="Apache" class="h-10 rounded-md" />
-                <img src="https://img.shields.io/badge/Tomcat-F8DC75?style=for-the-badge&logo=apachetomcat&logoColor=black" alt="Apache Tomcat" class="h-10 rounded-md" />
-                <img src="https://img.shields.io/badge/Nexus3-2B2B2B?style=for-the-badge" alt="Nexus3" class="h-10 rounded-md" />
-                <img src="https://img.shields.io/badge/Azure%20DevOps%20CI%2FCD-0078D7?style=for-the-badge&logo=azuredevops&logoColor=white" alt="Azure DevOps CI/CD" class="h-10 rounded-md" />
-                <img src="https://img.shields.io/badge/New%20Relic-008C99?style=for-the-badge&logo=newrelic&logoColor=white" alt="New Relic" class="h-10 rounded-md" />
-                <img src="https://img.shields.io/badge/Terragrunt-5C4EE5?style=for-the-badge&logo=terraform&logoColor=white" alt="Terragrunt" class="h-10 rounded-md" />
-
+        <!-- Project Card 2 – E-Kart Application -->
+        <div class="group card bg-stone-900 border border-stone-800 rounded-2xl p-6 hover-glow transition-all relative overflow-hidden">
+            <div id="project-5-gradient" class="absolute inset-0 group-hover:bg-gradient-to-br opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <div class="relative z-10">
+                <div class="mb-10">
+                    <img src="https://github.com/sudarshan-kr/sudarshan-kr.github.io/blob/main/E-kart%20Application%20Deployment.png?raw=true" alt="E-kart Application Deployment" loading="lazy" class="w-full object-contain rounded-lg">
+                </div>
+                <h3 class="text-lg font-semibold text-white mb-2">E-Kart Application Deployment on Kubernetes</h3>
+                <p class="text-stone-400 text-sm mb-4">I built a Java-based E-Kart application and deployed it on a private AWS EKS cluster using a complete end-to-end DevOps workflow, where I designed a secure AWS infrastructure with a custom VPC, private subnets, IAM roles, and a bastion host for controlled access. The application was packaged using Maven, containerized with Docker, and the image was pushed securely to AWS ECR, while all Kubernetes manifests were stored in GitHub with ArgoCD implementing a GitOps-based automated deployment process. External traffic was managed through the AWS ALB Ingress Controller for secure and reliable access, featuring Karpenter for intelligent autoscaling of nodes based on demand, with monitoring enabled via Prometheus and Grafana, and final access provided through a custom domain configured in AWS Route 53.</p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                    <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">AWS</span>
+                    <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">GitHub</span>
+                    <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">Maven</span>
+                    <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">Jdk</span>
+                    <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">Docker</span>
+                    <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">ECR</span>
+                    <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">Kubernetes</span>
+                    <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">Karpenter</span>
+                    <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">Argo CD</span>
+                    <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">Prometheus</span>
+                    <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">Grafana</span>
+                    <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">Ingress</span>
+                </div>
             </div>
-        </section>
+        </div>
 
-    <!-- Certificates Section -->
-    <section id="certificates" class="py-12">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Certificates</h2>
-            <div class="certificates-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-
-                <!-- Cert 1 -->
-                <div class="card bg-stone-900 border border-stone-800 rounded-2xl p-6 hover-glow transition-all">
-                    <div class="flex items-start space-x-4 mb-4">
-                        <div>
-                            <h3 class="text-xl font-semibold mb-1">AWS Cloud Practitioner Essentials</h3>
-                            <p class="text-stone-400 text-sm mb-1">Issuer: Amazon Web Services</p>
-                        </div>
-                    </div>
-                    <div class="flex space-x-3">
-                        <a href="https://drive.google.com/file/d/1s_eUotKJjf-EYsdaiwfhVTkg_c8Fc0ba/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn-magic px-4 py-2 rounded-lg text-sm" aria-label="View AWS certificate">View Certificate</a>
-                    </div>
+        <!-- Project Card 3 – MEAN Stack -->
+        <div class="group card bg-stone-900 border border-stone-800 rounded-2xl p-6 hover-glow transition-all relative overflow-hidden">
+            <div id="project-5-gradient" class="absolute inset-0 group-hover:bg-gradient-to-br opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <div class="relative z-10">
+                <div class="mb-4">
+                    <img src="https://github.com/sudarshan-kr/sudarshan-kr.github.io/blob/main/MEAN%20Stack%20Application%20CICD%20Deployment.png?raw=true" alt="Mean Stack Application CICD Deployment" class="w-full object-contain rounded-lg">
                 </div>
-
-                <!-- Cert 2 -->
-                <div class="card bg-stone-900 border border-stone-800 rounded-2xl p-6 hover-glow transition-all">
-                    <div class="flex items-start space-x-4 mb-4">
-                        <div>
-                            <h3 class="text-xl font-semibold mb-1">DevOps Course Completion Cirtificate</h3>
-                            <p class="text-stone-400 text-sm mb-1">Issuer: MicroDegree</p>
-                            
-                        </div>
-                    </div>
-                    <div class="flex space-x-3">
-                        <a href="https://drive.google.com/file/d/1sGkkNZnMAEpXgKrrmyKa9EfjagBfbM1u/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn-magic px-4 py-2 rounded-lg text-sm" aria-label="View Devops certificate">View Certificate</a>
-                    </div>
+                <h3 class="text-lg font-semibold text-white mb-2">MEAN Stack CI/CD Deployment – Full-Stack CRUD Application</h3>
+                <p class="text-stone-400 text-sm mb-4">I built and deployed a full-stack MEAN (MongoDB, Express, Angular, Node.js) CRUD application using complete DevOps automation. The source code was maintained in GitHub and automatically pulled to an AWS EC2 Ubuntu instance through a Jenkins CI/CD pipeline. Both frontend and backend applications were containerized using Docker, while MongoDB was deployed using the official Docker image. Docker Compose was used to orchestrate and run all services together in a single deployment. Jenkins handled building images, pushing them to Docker Hub, and redeploying updated containers on the EC2 server. Nginx was configured as a reverse proxy to route frontend and backend traffic efficiently. Finally, the application was successfully deployed and made accessible via the EC2 public IP, ensuring a reliable and automated deployment workflow.</p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                    <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">AWS</span>
+                    <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">Jenkins</span>
+                    <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">Node JS</span>
+                    <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">Nginx</span>
+                    <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">Docker Compose</span>
+                    <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">Mongo DB</span>
+                    <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">YAML</span>
+                    <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">Linux</span>
+                    <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">DevOps</span>
+                    <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">Docker Hub</span>
                 </div>
-
-                <!-- Cert 3 -->
-                <div class="card bg-stone-900 border border-stone-800 rounded-2xl p-6 hover-glow transition-all">
-                    <div class="flex items-start space-x-4 mb-4">
-                        <div>
-                            <h3 class="text-xl font-semibold mb-1">AWS Course Completion Certificate</h3>
-                            <p class="text-stone-400 text-sm mb-1">Issuer: MicroDegree</p>
-                            
-                        </div>
-                    </div>
-                    <div class="flex space-x-3">
-                        <a href="https://drive.google.com/file/d/1gT6FWNfhlMLXepUECCaWSrJDIag8jH9m/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn-magic px-4 py-2 rounded-lg text-sm" aria-label="View AWS Certificate">View Certificate</a>
-                    </div>
-                </div>
-
-                <!-- Cert 4 -->
-                <div class="card bg-stone-900 border border-stone-800 rounded-2xl p-6 hover-glow transition-all">
-                    <div class="flex items-start space-x-4 mb-4">
-                        <div>
-                            <h3 class="text-xl font-semibold mb-1">Internship Completion Certificate</h3>
-                            <p class="text-stone-400 text-sm mb-1">Issuer: Betatest Solutions Pvt Ltd</p>
-                            
-                        </div>
-                    </div>
-                    <div class="flex space-x-3">
-                        <a href="https://drive.google.com/file/d/1zQK1lPwLJiekGuV8uPXR9cOVvj7OGgFT/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn-magic px-4 py-2 rounded-lg text-sm" aria-label="Internship Completion Certificate">View Certificate</a>
-                    </div>
-                </div>
-
             </div>
-        </section>
+        </div>
+
         
+        <!-- Project Card 4 – GCP Migration -->
+<div class="group card bg-stone-900 border border-stone-800 rounded-2xl p-6 hover-glow transition-all relative overflow-hidden md:col-span-2 lg:col-span-2" style="max-width:none !important; width:100% !important; margin:0 !important;">
+    
+    <div id="project-3-gradient" class="absolute inset-0 group-hover:bg-gradient-to-br opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+    
+    <div class="relative z-10">
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-12">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-8">Let's Connect</h2>
-            <p class="text-center text-stone-400 mb-8 max-w-lg mx-auto">
-                I'm always open to discussing new projects, creative ideas, or opportunities. Feel free to reach out.
-            </p>
+        <!-- Two Images Section -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+            
+            <!-- GCP Image -->
+            <div class="rounded-lg overflow-hidden bg-stone-800 flex items-center justify-center h-72">
+                <img 
+                    src="https://github.com/sudarshan-kr/sudarshan-kr.github.io/blob/main/Gcp-Capstone-Project.drawio.png?raw=true"
+                    alt="GCP Capstone Migration Architecture"
+                    loading="lazy"
+                    class="w-full h-full object-contain rounded-lg cursor-pointer"
+                    onclick="document.getElementById('modal-gcp').classList.add('active')"
+                >
+            </div>
 
-            <div class="max-w-3xl mx-auto space-y-6">
-                <!-- Responsive Google Map embed -->
-                <div class="map-wrapper rounded-lg overflow-hidden border border-stone-800">
-                    <iframe
-                        title="Shakthi Anirudh Nilayam - Electronic City Phase 1 Map"
-                        src="https://www.google.com/maps?q=Shakthi+Anirudh+Nilayam,+MMR+RESIDENCY,+Anantha+Nagar+Rd,+Ananth+Nagar,+Phase+1,+Kammasandra,+Electronic+City,+Bengaluru,+Karnataka+560100&z=17&output=embed"
-                        style="border:0; width:100%; height:320px; display:block;"
-                        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                </div>
+            <!-- AWS Image -->
+            <div class="rounded-lg overflow-hidden bg-stone-800 flex items-center justify-center h-72">
+                <img 
+                    src="https://github.com/sudarshan-kr/sudarshan-kr.github.io/blob/main/aws.drawio1.png?raw=true"
+                    alt="AWS Architecture Diagram"
+                    loading="lazy"
+                    class="w-full h-full object-contain rounded-lg cursor-pointer"
+                    onclick="document.getElementById('modal-aws').classList.add('active')"
+                >
+            </div>
 
-                <!-- map is embedded above; no external link shown per request -->
+        </div>
 
-                <div class="space-y-4">
-                    <address class="not-italic text-center text-stone-400">
-                        Shakthi Anirudh Nilayam, MMR RESIDENCY, Anantha Nagar Rd, Ananth Nagar, Phase 1, Kammasandra, Electronic City, Vaddara Palya, Bengaluru, Karnataka 560100
-                    </address>
+        <!-- Buttons -->
+        <div class="flex flex-wrap gap-3 mb-4">
+            <button class="view-arch-btn" onclick="document.getElementById('modal-gcp').classList.add('active')">
+                <i class="fas fa-expand-alt"></i> View GCP Architecture
+            </button>
 
-                    <div class="flex justify-center">
-                        <a href="https://www.google.com/maps?q=Shakthi+Anirudh+Nilayam,+MMR+RESIDENCY,+Anantha+Nagar+Rd,+Ananth+Nagar,+Phase+1,+Kammasandra,+Electronic+City,+Bengaluru,+Karnataka+560100&z=17&output=embed" target="_blank" rel="noopener noreferrer" class="btn-magic text-sm px-6 py-3 rounded-full border border-stone-700 bg-stone-800 hover:bg-stone-700 transition inline-block" aria-label="Open address in Google Maps">
-                            Open in Google Maps
-                        </a>
-                    </div>
+            <button class="view-arch-btn" onclick="document.getElementById('modal-aws').classList.add('active')">
+                <i class="fas fa-expand-alt"></i> View AWS Architecture
+            </button>
+        </div>
+
+        <!-- Title -->
+        <h3 class="text-lg font-semibold text-white mb-2 mt-3">
+            GCP to AWS Migration – Cloud Infrastructure
+        </h3>
+
+        <!-- Project Explanation -->
+        <p class="text-stone-400 text-sm mb-4 leading-relaxed">
+            Architected and executed a full-scale migration of an existing GCP workload to AWS, redesigning the infrastructure using AWS-native services. The original GCP environment used Cloud Storage for static content, Cloud CDN for content delivery, Cloud SQL for database management, and Compute Engine instances inside a custom VPC. Secure outbound internet access was enabled through Cloud NAT, while Pub/Sub and Cloud Functions handled event-driven asynchronous processing.
+
+            The AWS migration replaced these services with equivalent AWS-native solutions such as Amazon S3 for static hosting, CloudFront for CDN delivery, Amazon RDS for managed database services, EC2 instances within a custom VPC, NAT Gateway for secure outbound access, SNS/SQS for messaging, and Lambda for serverless event processing. Monitoring and observability were implemented using Amazon CloudWatch, while Application Load Balancers distributed traffic across the infrastructure.
+
+            This migration improved scalability, availability, cost optimization, and operational visibility while maintaining secure network segmentation and high performance across the application stack.
+        </p>
+
+        <!-- Tags -->
+        <div class="flex flex-wrap gap-2 mb-4">
+            <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">GCP</span>
+            <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">Compute Engine</span>
+            <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">Cloud Load Balancing</span>
+            <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">Cloud CDN</span>
+            <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">Cloud DNS</span>
+            <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">GCS</span>
+            <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">Cloud SQL</span>
+            <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">VPC</span>
+            <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">Cloud NAT</span>
+            <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">Pub/Sub</span>
+            <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">Cloud Functions</span>
+            <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">Cloud Monitoring</span>
+            <span class="px-2 py-1 bg-stone-800 text-stone-300 rounded text-xs">Firewall Rules</span>
+        </div>
+    </div>
+</div>
+    </div>
+</section>
+
+<!-- Architecture Modals -->
+<div id="modal-aws" class="arch-modal-overlay" onclick="if(event.target===this)this.classList.remove('active')">
+    <div class="arch-modal-inner">
+        <button class="arch-modal-close" onclick="document.getElementById('modal-aws').classList.remove('active')">&times;</button>
+        <h3 class="text-base font-semibold mb-4" style="color:var(--heading-color)">AWS Cloud Infrastructure Architecture</h3>
+        <img src="https://github.com/sudarshan-kr/sudarshan-kr.github.io/blob/main/aws_drawio1.png?raw=true" alt="AWS Architecture Diagram">
+    </div>
+</div>
+
+<div id="modal-gcp" class="arch-modal-overlay" onclick="if(event.target===this)this.classList.remove('active')">
+    <div class="arch-modal-inner">
+        <button class="arch-modal-close" onclick="document.getElementById('modal-gcp').classList.remove('active')">&times;</button>
+        <h3 class="text-base font-semibold mb-4" style="color:var(--heading-color)">GCP Capstone Migration Architecture</h3>
+        <img src="https://github.com/sudarshan-kr/sudarshan-kr.github.io/blob/main/Gcp-Capstone-Project_drawio.png?raw=true" alt="GCP Architecture Diagram">
+    </div>
+</div>
+
+
+<!-- Skills Section -->
+<section id="skills" class="py-12">
+    <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">My Skills</h2>
+    <div class="flex justify-center flex-wrap gap-4 max-w-5xl mx-auto">
+        <!-- Cloud Platforms -->
+        <img src="https://img.shields.io/badge/AWS-232F3E?style=for-the-badge&logo=amazonaws&logoColor=white" alt="AWS" class="h-10 rounded-md" />
+        <img src="https://img.shields.io/badge/GCP-4285F4?style=for-the-badge&logo=googlecloud&logoColor=white" alt="GCP" class="h-10 rounded-md" />
+        <!-- DevOps & CI/CD -->
+        <img src="https://img.shields.io/badge/DevOps-0A66C2?style=for-the-badge&logo=azuredevops&logoColor=white" alt="DevOps" class="h-10 rounded-md" />
+        <img src="https://img.shields.io/badge/CI--CD-1F2937?style=for-the-badge&logo=githubactions&logoColor=white" alt="CI/CD" class="h-10 rounded-md" />
+        <img src="https://img.shields.io/badge/Jenkins-D24939?style=for-the-badge&logo=jenkins&logoColor=white" alt="Jenkins" class="h-10 rounded-md" />
+        <img src="https://img.shields.io/badge/Azure%20DevOps%20CI%2FCD-0078D7?style=for-the-badge&logo=azuredevops&logoColor=white" alt="Azure DevOps CI/CD" class="h-10 rounded-md" />
+        <img src="https://img.shields.io/badge/GitHub%20Actions-2088FF?style=for-the-badge&logo=githubactions&logoColor=white" alt="GitHub Actions" class="h-10 rounded-md" />
+        <!-- Containerization -->
+        <img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white" alt="Docker" class="h-10 rounded-md" />
+        <img src="https://img.shields.io/badge/Kubernetes-326CE5?style=for-the-badge&logo=kubernetes&logoColor=white" alt="Kubernetes" class="h-10 rounded-md" />
+        <img src="https://img.shields.io/badge/GKE-4285F4?style=for-the-badge&logo=googlecloud&logoColor=white" alt="GKE" class="h-10 rounded-md" />
+        <!-- IaC -->
+        <img src="https://img.shields.io/badge/Terraform-623CE4?style=for-the-badge&logo=terraform&logoColor=white" alt="Terraform" class="h-10 rounded-md" />
+        <img src="https://img.shields.io/badge/Terragrunt-5C4EE5?style=for-the-badge&logo=terraform&logoColor=white" alt="Terragrunt" class="h-10 rounded-md" />
+        <!-- Monitoring -->
+        <img src="https://img.shields.io/badge/Grafana-F46800?style=for-the-badge&logo=grafana&logoColor=white" alt="Grafana" class="h-10 rounded-md" />
+        <img src="https://img.shields.io/badge/Prometheus-E6442E?style=for-the-badge&logo=prometheus&logoColor=white" alt="Prometheus" class="h-10 rounded-md" />
+        <img src="https://img.shields.io/badge/New%20Relic-008C99?style=for-the-badge&logo=newrelic&logoColor=white" alt="New Relic" class="h-10 rounded-md" />
+        <!-- Database & Migration -->
+        <img src="https://img.shields.io/badge/SQL%20Server-CC2927?style=for-the-badge&logo=microsoftsqlserver&logoColor=white" alt="SQL Server" class="h-10 rounded-md" />
+        <img src="https://img.shields.io/badge/CDC-6B7280?style=for-the-badge" alt="CDC" class="h-10 rounded-md" />
+        <img src="https://img.shields.io/badge/Fivetran-0073E6?style=for-the-badge" alt="Fivetran" class="h-10 rounded-md" />
+        <img src="https://img.shields.io/badge/AWS%20DMS-FF9900?style=for-the-badge&logo=amazonaws&logoColor=white" alt="AWS DMS" class="h-10 rounded-md" />
+        <!-- Web & Networking -->
+        <img src="https://img.shields.io/badge/Nginx-009639?style=for-the-badge&logo=nginx&logoColor=white" alt="Nginx" class="h-10 rounded-md" />
+        <img src="https://img.shields.io/badge/VPN-6B7280?style=for-the-badge" alt="VPN" class="h-10 rounded-md" />
+        <!-- Version Control & OS -->
+        <img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white" alt="Git" class="h-10 rounded-md" />
+        <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub" class="h-10 rounded-md" />
+        <img src="https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black" alt="Linux" class="h-10 rounded-md" />
+        <img src="https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white" alt="Windows" class="h-10 rounded-md" />
+        <!-- Programming -->
+        <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python" class="h-10 rounded-md" />
+        <!-- Other -->
+        <img src="https://img.shields.io/badge/Helm-0F172A?style=for-the-badge&logo=helm&logoColor=white" alt="Helm" class="h-10 rounded-md" />
+        <img src="https://img.shields.io/badge/ArgoCD-2D3748?style=for-the-badge&logo=argocd&logoColor=white" alt="ArgoCD" class="h-10 rounded-md" />
+        <img src="https://img.shields.io/badge/Ansible-EE0000?style=for-the-badge&logo=ansible&logoColor=white" alt="Ansible" class="h-10 rounded-md" />
+        <img src="https://img.shields.io/badge/Maven-C71A36?style=for-the-badge&logo=apachemaven&logoColor=white" alt="Maven" class="h-10 rounded-md" />
+        <img src="https://img.shields.io/badge/Shell-BB8F00?style=for-the-badge&logo=gnubash&logoColor=white" alt="Shell Scripting" class="h-10 rounded-md" />
+        <img src="https://img.shields.io/badge/SonarQube-4E9BCD?style=for-the-badge&logo=sonarqube&logoColor=white" alt="SonarQube" class="h-10 rounded-md" />
+        <img src="https://img.shields.io/badge/Trivy-0F172A?style=for-the-badge&logo=trivy&logoColor=white" alt="Trivy" class="h-10 rounded-md" />
+        <img src="https://img.shields.io/badge/OWASP-EE0000?style=for-the-badge&logo=owasp&logoColor=white" alt="OWASP" class="h-10 rounded-md" />
+        <img src="https://img.shields.io/badge/Nexus3-2B2B2B?style=for-the-badge" alt="Nexus3" class="h-10 rounded-md" />
+        <img src="https://img.shields.io/badge/Apache-6B8EBF?style=for-the-badge&logo=apache&logoColor=white" alt="Apache" class="h-10 rounded-md" />
+        <img src="https://img.shields.io/badge/Tomcat-F8DC75?style=for-the-badge&logo=apachetomcat&logoColor=black" alt="Apache Tomcat" class="h-10 rounded-md" />
+        <img src="https://img.shields.io/badge/Observability-6B7280?style=for-the-badge" alt="Observability" class="h-10 rounded-md" />
+    </div>
+</section>
+
+<!-- Certificates Section -->
+<section id="certificates" class="py-12">
+    <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Certificates</h2>
+    <div class="certificates-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+
+        <!-- Cert 1 -->
+        <div class="card bg-stone-900 border border-stone-800 rounded-2xl p-6 hover-glow transition-all">
+            <div class="flex items-start space-x-4 mb-4">
+                <div>
+                    <h3 class="text-xl font-semibold mb-1">AWS Cloud Practitioner Essentials</h3>
+                    <p class="text-stone-400 text-sm mb-1">Issuer: Amazon Web Services</p>
                 </div>
             </div>
-        </section>
+            <div class="flex space-x-3">
+                <a href="https://drive.google.com/file/d/1s_eUotKJjf-EYsdaiwfhVTkg_c8Fc0ba/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn-magic px-4 py-2 rounded-lg text-sm" aria-label="View AWS certificate">View Certificate</a>
+            </div>
+        </div>
 
-    </main>
+        <!-- Cert 2 -->
+        <div class="card bg-stone-900 border border-stone-800 rounded-2xl p-6 hover-glow transition-all">
+            <div class="flex items-start space-x-4 mb-4">
+                <div>
+                    <h3 class="text-xl font-semibold mb-1">DevOps Course Completion Certificate</h3>
+                    <p class="text-stone-400 text-sm mb-1">Issuer: MicroDegree</p>
+                </div>
+            </div>
+            <div class="flex space-x-3">
+                <a href="https://drive.google.com/file/d/1sGkkNZnMAEpXgKrrmyKa9EfjagBfbM1u/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn-magic px-4 py-2 rounded-lg text-sm" aria-label="View Devops certificate">View Certificate</a>
+            </div>
+        </div>
 
-    <!-- Footer -->
-   <!-- Footer -->
-<!-- Footer -->
-    <!-- Footer -->
-<footer id="footer" class="relative py-8 mt-12 text-center text-sm border-t border-stone-800 bg-gradient-to-b from-stone-900/50 to-stone-900">
-    <div class="container mx-auto px-4">
-        <!-- Footer social icons removed as requested; contact icons will be added inside the Contact section if desired -->
-    <!-- Copyright text removed as requested -->
+        <!-- Cert 3 -->
+        <div class="card bg-stone-900 border border-stone-800 rounded-2xl p-6 hover-glow transition-all">
+            <div class="flex items-start space-x-4 mb-4">
+                <div>
+                    <h3 class="text-xl font-semibold mb-1">AWS Course Completion Certificate</h3>
+                    <p class="text-stone-400 text-sm mb-1">Issuer: MicroDegree</p>
+                </div>
+            </div>
+            <div class="flex space-x-3">
+                <a href="https://drive.google.com/file/d/1gT6FWNfhlMLXepUECCaWSrJDIag8jH9m/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn-magic px-4 py-2 rounded-lg text-sm" aria-label="View AWS Certificate">View Certificate</a>
+            </div>
+        </div>
+
+        <!-- Cert 4 -->
+        <div class="card bg-stone-900 border border-stone-800 rounded-2xl p-6 hover-glow transition-all">
+            <div class="flex items-start space-x-4 mb-4">
+                <div>
+                    <h3 class="text-xl font-semibold mb-1">Internship Completion Certificate</h3>
+                    <p class="text-stone-400 text-sm mb-1">Issuer: Betatest Solutions Pvt Ltd</p>
+                </div>
+            </div>
+            <div class="flex space-x-3">
+                <a href="https://drive.google.com/file/d/1zQK1lPwLJiekGuV8uPXR9cOVvj7OGgFT/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn-magic px-4 py-2 rounded-lg text-sm" aria-label="Internship Completion Certificate">View Certificate</a>
+            </div>
+        </div>
+	
+	<!-- Cert 5 -->
+<div class="card bg-stone-900 border border-stone-800 rounded-2xl p-6 hover-glow transition-all">
+    <div class="flex items-start space-x-4 mb-4">
+        <div>
+            <h3 class="text-xl font-semibold mb-1">Google Cloud Certified Professional Cloud Architect </h3>
+            <p class="text-stone-400 text-sm mb-1">Issuer: Google Cloud Platform</p>
+        </div>
     </div>
+    <div class="flex space-x-3">
+        <a href="https://drive.google.com/file/d/1FUpD3gPoabcEURCGyShayx5Bt6xjAojX/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="btn-magic px-4 py-2 rounded-lg text-sm" aria-label="View AWS Certified Cloud Practitioner Certificate">
+            View Certificate
+        </a>
+    </div>
+</div>
+
+    </div>
+</section>
+
+
+<!-- Contact Section -->
+<section id="contact" class="py-12">
+    <h2 class="text-3xl md:text-4xl font-bold text-center mb-8">Let's Connect</h2>
+    <p class="text-center text-stone-400 mb-8 max-w-lg mx-auto">
+        I'm always open to discussing new projects, creative ideas, or opportunities. Feel free to reach out.
+    </p>
+
+    <div class="max-w-3xl mx-auto space-y-6">
+        <div class="map-wrapper rounded-lg overflow-hidden border border-stone-800">
+            <iframe
+                title="Shakthi Anirudh Nilayam - Electronic City Phase 1 Map"
+                src="https://www.google.com/maps?q=Shakthi+Anirudh+Nilayam,+MMR+RESIDENCY,+Anantha+Nagar+Rd,+Ananth+Nagar,+Phase+1,+Kammasandra,+Electronic+City,+Bengaluru,+Karnataka+560100&z=17&output=embed"
+                style="border:0; width:100%; height:320px; display:block;"
+                allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+
+        <div class="space-y-4">
+            <address class="not-italic text-center text-stone-400">
+                Shakthi Anirudh Nilayam, MMR RESIDENCY, Anantha Nagar Rd, Ananth Nagar, Phase 1, Kammasandra, Electronic City, Vaddara Palya, Bengaluru, Karnataka 560100
+            </address>
+
+            <div class="flex justify-center">
+                <a href="https://www.google.com/maps?q=Shakthi+Anirudh+Nilayam,+MMR+RESIDENCY,+Anantha+Nagar+Rd,+Ananth+Nagar,+Phase+1,+Kammasandra,+Electronic+City,+Bengaluru,+Karnataka+560100&z=17&output=embed" target="_blank" rel="noopener noreferrer" class="btn-magic text-sm px-6 py-3 rounded-full border border-stone-700 bg-stone-800 hover:bg-stone-700 transition inline-block" aria-label="Open address in Google Maps">
+                    Open in Google Maps
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+</main>
+
+<!-- Footer -->
+<footer id="footer" class="relative py-8 mt-12 text-center text-sm border-t border-stone-800 bg-gradient-to-b from-stone-900/50 to-stone-900">
+    <div class="container mx-auto px-4"></div>
 </footer>
 
-<!-- Bottom-fixed contact bar (visible before scrolling) -->
+<!-- Bottom-fixed contact bar -->
 <div id="bottom-contacts" role="region" aria-label="Quick contacts" title="Quick contacts">
     <a href="https://github.com/gowdas1997" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="contact-icon">
         <i class="fab fa-github" aria-hidden="true"></i>
@@ -739,7 +896,6 @@
     <a href="https://www.linkedin.com/in/sudarshankr" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="contact-icon">
         <i class="fab fa-linkedin" aria-hidden="true"></i>
     </a>
-    
     <a href="https://www.instagram.com/sudarshan_gowda_97" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="contact-icon">
         <i class="fab fa-instagram" aria-hidden="true"></i>
     </a>
@@ -749,177 +905,151 @@
 </div>
 
 
-    <script>
-        // Mobile menu toggle
-        document.addEventListener('DOMContentLoaded', () => {
-            // Theme initialization
-            const root = document.documentElement;
-            const storedTheme = localStorage.getItem('theme');
-            const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-            function applyTheme(theme) {
-                root.setAttribute('data-theme', theme);
-                const icon = document.getElementById('theme-icon');
-                if (icon) icon.className = theme === 'dark' ? 'fas fa-moon' : 'fas fa-sun';
-            }
-            const initialTheme = storedTheme || (prefersDark ? 'dark' : 'light');
-            applyTheme(initialTheme);
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Theme initialization
+        const root = document.documentElement;
+        const storedTheme = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        function applyTheme(theme) {
+            root.setAttribute('data-theme', theme);
+            const icon = document.getElementById('theme-icon');
+            if (icon) icon.className = theme === 'dark' ? 'fas fa-moon' : 'fas fa-sun';
+        }
+        const initialTheme = storedTheme || (prefersDark ? 'dark' : 'light');
+        applyTheme(initialTheme);
 
-            const themeBtn = document.getElementById('theme-toggle');
-            if (themeBtn) {
-                themeBtn.addEventListener('click', () => {
-                    const current = document.documentElement.getAttribute('data-theme') || 'light';
-                    const next = current === 'dark' ? 'light' : 'dark';
-                    applyTheme(next);
-                    localStorage.setItem('theme', next);
-                });
-            }
-            const btn = document.getElementById('mobile-menu-btn');
-            const mobileNav = document.getElementById('mobile-nav');
-            const mobileClose = document.getElementById('mobile-nav-close');
-            if (btn && mobileNav) {
-                const openMenu = () => {
-                    mobileNav.classList.remove('-translate-y-full');
-                    mobileNav.classList.add('translate-y-0');
-                    btn.setAttribute('aria-expanded', 'true');
-                };
-                const closeMenu = () => {
-                    mobileNav.classList.add('-translate-y-full');
-                    mobileNav.classList.remove('translate-y-0');
-                    btn.setAttribute('aria-expanded', 'false');
-                };
+        const themeBtn = document.getElementById('theme-toggle');
+        if (themeBtn) {
+            themeBtn.addEventListener('click', () => {
+                const current = document.documentElement.getAttribute('data-theme') || 'light';
+                const next = current === 'dark' ? 'light' : 'dark';
+                applyTheme(next);
+                localStorage.setItem('theme', next);
+            });
+        }
 
-                btn.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    const isOpen = btn.getAttribute('aria-expanded') === 'true';
-                    if (isOpen) closeMenu(); else openMenu();
-                });
+        const btn = document.getElementById('mobile-menu-btn');
+        const mobileNav = document.getElementById('mobile-nav');
+        const mobileClose = document.getElementById('mobile-nav-close');
+        if (btn && mobileNav) {
+            const openMenu = () => {
+                mobileNav.classList.remove('-translate-y-full');
+                mobileNav.classList.add('translate-y-0');
+                btn.setAttribute('aria-expanded', 'true');
+            };
+            const closeMenu = () => {
+                mobileNav.classList.add('-translate-y-full');
+                mobileNav.classList.remove('translate-y-0');
+                btn.setAttribute('aria-expanded', 'false');
+            };
 
-                if (mobileClose) {
-                    mobileClose.addEventListener('click', (e) => {
-                        e.stopPropagation();
-                        closeMenu();
-                    });
-                }
-
-                // Close mobile nav when clicking outside (only when open)
-                document.addEventListener('click', (e) => {
-                    const isOpen = btn.getAttribute('aria-expanded') === 'true';
-                    if (!isOpen) return;
-                    if (!mobileNav.contains(e.target) && !btn.contains(e.target)) {
-                        closeMenu();
-                    }
-                });
-                // Prevent clicks inside nav from closing
-                mobileNav.addEventListener('click', (e) => e.stopPropagation());
-
-                // Close the mobile menu when any nav link is clicked (so it navigates and collapses)
-                const mobileLinks = mobileNav.querySelectorAll('a');
-                mobileLinks.forEach(link => {
-                    link.addEventListener('click', () => {
-                        // small delay to allow anchor navigation on some browsers
-                        setTimeout(() => {
-                            mobileNav.classList.add('-translate-y-full');
-                            mobileNav.classList.remove('translate-y-0');
-                            btn.setAttribute('aria-expanded', 'false');
-                        }, 50);
-                    });
-                });
-            }
-
-            // Parallax effect guard (only when image exists)
-            const cards = document.querySelectorAll('.projects-grid .card');
-            cards.forEach(card => {
-                const img = card.querySelector('.parallax-container img');
-                if (!img) return; // skip if no image
-
-                card.addEventListener('mousemove', (e) => {
-                    const rect = card.getBoundingClientRect();
-                    const x = e.clientX - rect.left;
-                    const y = e.clientY - rect.top;
-                    const centerX = rect.width / 2;
-                    const centerY = rect.height / 2;
-                    const rotateX = ((centerY - y) / centerY) * 5;
-                    const rotateY = ((x - centerX) / centerX) * 5;
-                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-
-                    const imgTranslateX = ((x - centerX) / centerX) * 10;
-                    const imgTranslateY = ((y - centerY) / centerY) * 10;
-                    img.style.transform = `translate(${imgTranslateX}px, ${imgTranslateY}px) scale(1.05)`;
-                });
-
-                card.addEventListener('mouseleave', () => {
-                    card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg)`;
-                    img.style.transform = `translate(0px, 0px) scale(1)`;
-                });
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const isOpen = btn.getAttribute('aria-expanded') === 'true';
+                if (isOpen) closeMenu(); else openMenu();
             });
 
-            // Adjust scroll-margin-top for anchored sections so headings are not hidden by the sticky header
+            if (mobileClose) {
+                mobileClose.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    closeMenu();
+                });
+            }
+
+            document.addEventListener('click', (e) => {
+                const isOpen = btn.getAttribute('aria-expanded') === 'true';
+                if (!isOpen) return;
+                if (!mobileNav.contains(e.target) && !btn.contains(e.target)) {
+                    closeMenu();
+                }
+            });
+            mobileNav.addEventListener('click', (e) => e.stopPropagation());
+
+            const mobileLinks = mobileNav.querySelectorAll('a');
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    setTimeout(() => {
+                        mobileNav.classList.add('-translate-y-full');
+                        mobileNav.classList.remove('translate-y-0');
+                        btn.setAttribute('aria-expanded', 'false');
+                    }, 50);
+                });
+            });
+        }
+
+        // Parallax effect guard
+        const cards = document.querySelectorAll('.projects-grid .card');
+        cards.forEach(card => {
+            const img = card.querySelector('.parallax-container img');
+            if (!img) return;
+
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotateX = ((centerY - y) / centerY) * 5;
+                const rotateY = ((x - centerX) / centerX) * 5;
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+                const imgTranslateX = ((x - centerX) / centerX) * 10;
+                const imgTranslateY = ((y - centerY) / centerY) * 10;
+                img.style.transform = `translate(${imgTranslateX}px, ${imgTranslateY}px) scale(1.05)`;
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg)`;
+                img.style.transform = `translate(0px, 0px) scale(1)`;
+            });
+        });
+
+        // Adjust scroll-margin-top for sticky header
+        try {
+            const headerEl = document.querySelector('header');
+            const headerHeight = headerEl ? Math.ceil(headerEl.getBoundingClientRect().height) : 72;
+            document.querySelectorAll('section[id]').forEach(sec => {
+                sec.style.scrollMarginTop = (headerHeight + 8) + 'px';
+            });
+        } catch (e) {}
+
+        // Gmail compose helper
+        function openGmailCompose(email, subject = '', body = '') {
             try {
-                const headerEl = document.querySelector('header');
-                const headerHeight = headerEl ? Math.ceil(headerEl.getBoundingClientRect().height) : 72;
-                document.querySelectorAll('section[id]').forEach(sec => {
-                    sec.style.scrollMarginTop = (headerHeight + 8) + 'px'; // small extra gap
-                });
+                const params = new URLSearchParams();
+                if (subject) params.set('subject', subject);
+                if (body) params.set('body', body);
+                const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=${encodeURIComponent(email)}&${params.toString()}`;
+                const win = window.open(gmailUrl, '_blank');
+                if (!win) window.location.href = `mailto:${email}?${params.toString()}`;
             } catch (e) {
-                // ignore
+                window.location.href = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
             }
+        }
 
-            // Open Gmail compose (with mailto fallback)
-            function openGmailCompose(email, subject = '', body = '') {
-                try {
-                    const params = new URLSearchParams();
-                    if (subject) params.set('subject', subject);
-                    if (body) params.set('body', body);
-                    // Gmail compose URL with prefilled to, subject, body
-                    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=${encodeURIComponent(email)}&${params.toString()}`;
-                    const win = window.open(gmailUrl, '_blank');
-                    if (!win) {
-                        // popup blocked or failed - fallback to mailto
-                        window.location.href = `mailto:${email}?${params.toString()}`;
-                    }
-                } catch (e) {
-                    // On any error, fallback to mailto
-                    window.location.href = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-                }
-            }
+        // Resume buttons
+        const RESUME_URL = 'https://drive.google.com/file/d/13zjYftW9dpWPX3LHMaS9pVaz-sxBks2c/view?usp=sharing';
+        function openResume() { window.open(RESUME_URL, '_blank', 'noopener,noreferrer'); }
+        const resumeDesktop = document.getElementById('download-resume-desktop');
+        const resumeMobile = document.getElementById('download-resume-mobile');
+        if (resumeDesktop) resumeDesktop.addEventListener('click', (e) => { e.preventDefault(); openResume(); });
+        if (resumeMobile) resumeMobile.addEventListener('click', (e) => { e.preventDefault(); openResume(); });
 
-            // Resume URL configuration
-            const RESUME_URL = 'https://drive.google.com/file/d/13zjYftW9dpWPX3LHMaS9pVaz-sxBks2c/view?usp=sharing';
+        // Mail buttons
+        const footerMail = document.getElementById('footer-mail-btn');
+        if (footerMail) footerMail.addEventListener('click', (e) => { e.preventDefault(); openGmailCompose('gowdaskr1997@gmail.com'); });
 
-            // Hook up Resume download buttons (desktop and mobile)
-            const resumeDesktop = document.getElementById('download-resume-desktop');
-            const resumeMobile = document.getElementById('download-resume-mobile');
-            function openResume() {
-                if (!RESUME_URL || RESUME_URL.includes('YOUR_FILE_ID_HERE')) {
-                    // If user didn't configure URL, fallback to opening a Google Drive viewer in a new tab (or do nothing)
-                    const viewer = 'https://drive.google.com/drive/my-drive';
-                    window.open(viewer, '_blank', 'noopener');
-                    return;
-                }
-                window.open(RESUME_URL, '_blank', 'noopener,noreferrer');
-            }
-            if (resumeDesktop) resumeDesktop.addEventListener('click', (e) => { e.preventDefault(); openResume(); });
-            if (resumeMobile) resumeMobile.addEventListener('click', (e) => { e.preventDefault(); openResume(); });
+        const bottomMail = document.getElementById('bottom-mail-btn');
+        if (bottomMail) bottomMail.addEventListener('click', (e) => { e.preventDefault(); openGmailCompose('gowdaskr1997@gmail.com'); });
 
-            // Hook up footer mail button to open Gmail
-            const footerMail = document.getElementById('footer-mail-btn');
-            if (footerMail) {
-                footerMail.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    openGmailCompose('gowdaskr1997@gmail.com');
-                });
-            }
-
-            // Hook up bottom contact bar mail button (visible before scrolling)
-            const bottomMail = document.getElementById('bottom-mail-btn');
-            if (bottomMail) {
-                bottomMail.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    openGmailCompose('gowdaskr1997@gmail.com');
-                });
+        // Close modals on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                document.querySelectorAll('.arch-modal-overlay.active').forEach(m => m.classList.remove('active'));
             }
         });
-    </script>
-    
+    });
+</script>
+
 </body>
 </html>
